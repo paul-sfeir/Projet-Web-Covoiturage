@@ -1,0 +1,235 @@
+﻿/* Page d'accueil */
+
+@font-face {
+    font-family: 'caviar_dreamsregular';
+    src: url('../Media/font/caviardreams-webfont.eot');
+    src: url('../Media/font/caviardreams-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../Media/font/caviardreams-webfont.woff') format('woff'),
+         url('../Media/font/caviardreams-webfont.ttf') format('truetype'),
+         url('../Media/font/caviardreams-webfont.svg#caviar_dreamsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lobster_1.3regular';
+    src: url('../Media/font/lobster_1.3-webfont.eot');
+    src: url('../Media/font/lobster_1.3-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../Media/font/lobster_1.3-webfont.woff2') format('woff2'),
+         url('../Media/font/lobster_1.3-webfont.woff') format('woff'),
+         url('../Media/font/lobster_1.3-webfont.ttf') format('truetype'),
+         url('../Media/font/lobster_1.3-webfont.svg#lobster_1.3regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+a:-webkit-any-link {
+	text-decoration: none;
+}
+
+
+#container {
+	width: 65%;
+	margin: auto;
+	margin-top: 80px;
+	margin-bottom: 80px;
+	position: relative;
+}
+
+h2 {
+	font-family: 'lobster_1.3regular';
+	margin-left: 20px;
+}
+
+.navaccueil {
+	text-align: right;
+}
+
+.navaccueil li {
+	margin: 10px;
+}
+
+.navaccueil li  a:hover {
+	text-decoration: none;
+}
+
+#logoaccueil {
+	height: 150px;
+	position : absolute;
+}
+
+#accrecherche {
+	width: 34%;
+	height: auto;
+	background-color: rgba(0, 0, 0, 0.7);
+	margin: auto;
+	margin-top : 200px;
+	padding : 20px;
+	color: white;
+}
+
+#accrecherche h2 {
+	color: white;
+}
+
+.form_date {
+	width: 150px;
+}
+
+.button_search {
+	margin-top: 20px;
+	margin-right : 10px;
+	margin-left: 80%;
+	position: relative;
+}
+
+.navaccueil2 {
+	background-color: #4d4d4d;
+	margin-top: 250px;
+	text-align: center;
+	font-family: 'caviar_dreamsregular';
+	font-size: 20px;
+}
+
+.navaccueil2 li {
+	margin: 0;
+	padding: 40px;
+}
+
+.navaccueil2 li:hover {
+	background-color: #444444;
+}
+
+.navaccueil2 a:hover {
+	text-decoration: none;
+}
+
+.nav_icon {
+	height:30px;
+	padding-right: 10px;
+	margin-bottom : 10px;
+}
+
+#nav_derniers {
+	color: #FF0068;
+}
+
+#nav_recherche{
+	color: #177F75;
+}
+
+#nav_proposer {
+	color: #23B1B5;
+}
+
+#nav_compte {
+	color: #b53fc9;
+}
+
+#nav_logo {
+	height: 100px;
+	margin-right: 50px;
+}
+
+.img_ronde {
+	background-image: url('../Media/trafic.jpg');
+	overflow:hidden;
+    -webkit-border-radius:200px;
+    -moz-border-radius:200px;
+    border-radius:200px;
+    width:300px;
+    height:300px;
+	margin-right: 40px;
+	float: left;
+}
+
+.contenu li {
+	margin-bottom: 10px;
+}
+
+.recherche_av a {
+	margin-top: 10px;
+}
+
+
+/* Background javascript */
+#background_cycler {
+	padding:0;
+	margin:0;
+	width:100%;
+	height: 90%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-1
+}
+#background_cycler img {
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	z-index:1;
+	height: 90%;
+}
+
+#background_cycler img.active {
+	z-index:3;
+	height: 90%;
+}
+
+
+
+/* Gabarits de la structure générale des autres pages */
+
+.nav_princ {
+	background-color: #4d4d4d;
+	text-decoration: none;
+	height: 100px;
+}
+
+.nav_princ li a{
+	margin-right: 50px;
+	text-decoration: none;
+	color: white;
+	font-family: 'caviar_dreamsregular';
+}
+
+.nav_princ #nav_derniers2:hover {
+	color: #FF0068;
+}
+
+.nav_princ li #nav_recherche2:hover {
+	color: #177F75;
+}
+
+#nav_proposer2:hover {
+	color: #23B1B5;
+}
+
+#nav_compte2:hover {
+	color: #b53fc9;
+}
+
+#connexion {
+	margin-left: 23%;
+}
+
+.menu_co a:hover {
+	color: #08c;
+}
+
+footer {
+	margin-bottom: 0px;
+	text-align: center;
+	background-color: #4d4d4d;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	font-family: 'caviar_dreamsregular';
+	color: white;
+}
+
+#logo_upssitech {
+	height: 30px;
+}
+

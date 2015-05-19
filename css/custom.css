@@ -1,0 +1,29 @@
+﻿body {
+	background-image: url('../Media/background.png');
+}
+
+/* Div des contenus des pages */
+.contenu {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color : white;
+}
+
+#form_connexion {
+	width: 31.914893617021278%;
+	margin: 23% auto;
+	padding: 10px 30px 10px 30px;
+}
+
+#form_connexion input {
+	width: 90%;
+}
+
+#form_connexion .button_search {
+	width: 40%;
+}
+
+.button_search {
+	margin-left: 50%;
+}
