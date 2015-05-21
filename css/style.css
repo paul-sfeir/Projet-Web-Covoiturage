@@ -144,8 +144,13 @@ h2 {
 	float: left;
 }
 
+.contenu {
+	padding-bottom: 100px;
+}
+
 .contenu li {
 	margin-bottom: 10px;
+	list-style: none;
 }
 
 .recherche_av a {
