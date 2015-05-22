@@ -40,11 +40,25 @@
 	position: relative;
 }
 
-#form_co_ins  form{
+#form_co_ins  form, #form_ins form {
 	margin-left: 30px;
 }
 
-#form_co_ins input {
+#form_co_ins input, #form_ins input {
 	width: 90%;
 }
+
+#form_ins .button_search {
+	margin-left: 72%;
+}
+
+#form_ins, #form_co_ins {
+	margin-top: 5%;
+}
+
+#form_ins {
+	margin-bottom: 8%;
+}
+
+
 
