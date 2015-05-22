@@ -1,4 +1,12 @@
-﻿<head>
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    $_SESSION['login'] = 'anonyme';
+}
+include "bdd.php";
+?>
+
+<head>
 	<title>Connexion - GoCars</title>
 	<meta charset="UTF-8">
 	
@@ -48,8 +56,9 @@
 					</a>
 				</li>
 				
-				<li id="connexion" class="menu_co"><a href="#connexion.html">Connexion</a></li>
-				<li class="menu_co"><a href="inscription.html">Inscription</a></li>
+				<?php
+                    include "boutons_connexion_header.php";
+                ?>
 			</ul>
 			
 		</div>
@@ -62,7 +71,7 @@
 			
 			<h2>Déjà membre ?</h2>
 			
-			<form>
+			<form method="post" name="connexion">
 				<label>Identifiant</label>
 				<input type="text" name="login"/>
 				
@@ -83,3 +92,25 @@
 </body>
 
 </html>
+
+<?php 
+    if(isset($_POST['login']) && isset($_POST['password'])){
+        $login = $_POST['login'];
+        $pass = $_POST['password'];
+        
+        $query = "SELECT email, photo, prenom, nom FROM Utilisateurs WHERE email = '".$login."' AND password = '".$pass."';";
+
+        $result = mysqli_query($conn, $query);
+        
+        $tabInfoUtilisateur = mysqli_fetch_assoc($result);
+         
+        if($tabInfoUtilisateur != NULL){
+            $_SESSION['login'] = $tabInfoUtilisateur['email'];
+            $_SESSION['photo'] = $tabInfoUtilisateur['photo'];
+            $_SESSION['prenom'] = $tabInfoUtilisateur['prenom'];
+            $_SESSION['nom'] = $tabInfoUtilisateur['nom'];
+            header("Location: index.php");
+        }
+     
+    }
+?>
