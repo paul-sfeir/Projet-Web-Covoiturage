@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`Utilisateurs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Utilisateurs` (
-  `id_utilisteurs` INT NULL,
+  `id_utilisteurs` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
   `prenom` VARCHAR(45) NULL,
@@ -41,7 +41,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Trajets`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Trajets` (
-  `id_trajets` INT NULL,
+  `id_trajets` INT NOT NULL AUTO_INCREMENT,
   `nombres_places` INT NULL,
   `modele_voiture` VARCHAR(45) NULL,
   `date_depart` VARCHAR(45) NULL,
@@ -63,7 +63,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Messages`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Messages` (
-  `idmessage` INT NULL,
+  `idmessage` INT NOT NULL AUTO_INCREMENT,
   `sujet` VARCHAR(45) NULL,
   `message` VARCHAR(300) NULL,
   `id_emetteur` INT NULL,
@@ -88,7 +88,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Reserver`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Reserver` (
-  `id_reservation` INT NULL,
+  `id_reservation` INT NOT NULL AUTO_INCREMENT,
   `id_passager` INT NOT NULL,
   `id_trajet` INT NULL,
   PRIMARY KEY (`id_reservation`),
@@ -111,7 +111,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Proposer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Proposer` (
-  `id_proposer` INT NULL,
+  `id_proposer` INT NOT NULL AUTO_INCREMENT,
   `id_conducteur` INT NULL,
   `id_trajet` INT NULL,
   INDEX `fk_Proposer_1_idx` (`id_trajet` ASC),
@@ -133,7 +133,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Commentaire_utilisateur`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Commentaire_utilisateur` (
-  `id_commentaire_utilisateur` INT NULL,
+  `id_commentaire_utilisateur` INT NOT NULL AUTO_INCREMENT,
   `id_utilisateur` INT NULL,
   `commentaire_utilisateur` VARCHAR(200) NULL,
   PRIMARY KEY (`id_commentaire_utilisateur`),
@@ -150,7 +150,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Historique_trajets`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Historique_trajets` (
-  `id_historique_trajets` INT NOT NULL,
+  `id_historique_trajets` INT NOT NULL AUTO_INCREMENT,
   `date_depart` VARCHAR(45) NULL,
   `ville_depart` VARCHAR(45) NULL,
   `ville_arrivee` VARCHAR(45) NULL,
@@ -164,7 +164,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Partenaires`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Partenaires` (
-  `id_partenaires` INT NOT NULL,
+  `id_partenaires` INT NOT NULL AUTO_INCREMENT,
   `nom_partenaire` VARCHAR(100) NULL,
   `nom_contact` VARCHAR(45) NULL,
   `adresse_mail` VARCHAR(100) NULL,
@@ -176,7 +176,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Cadeaux`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Cadeaux` (
-  `id_cadeaux` INT NOT NULL,
+  `id_cadeaux` INT NOT NULL AUTO_INCREMENT,
   `id_partenaire` INT NULL,
   `nom_cadeau` VARCHAR(100) NULL,
   `nom_image_cadeau` VARCHAR(100) NULL,
@@ -195,7 +195,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Noter`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Noter` (
-  `id_Noter` INT NOT NULL,
+  `id_Noter` INT NOT NULL AUTO_INCREMENT,
   `id_receveur_note` INT NULL,
   `id_donneur_note` INT NULL,
   `note` INT NULL,
@@ -219,7 +219,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Etapes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Etapes` (
-  `id_etapes` INT NOT NULL,
+  `id_etapes` INT NOT NOT NULL AUTO_INCREMENT,
   `id_trajet` INT NULL,
   `ville_etape` VARCHAR(100) NULL,
   PRIMARY KEY (`id_etapes`),
