@@ -238,24 +238,24 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 SET foreign_key_checks = 0;
 
---Partenaires
+-- Partenaires
 INSERT INTO Partenaires VALUES (1, 'SPIDEE', 'John', 'john.snow@gmail.com');
 INSERT INTO Partenaires VALUES (2, 'CARGLACE', 'Jack', 'jack.leventreur@gmail.com');
 INSERT INTO Partenaires VALUES (3, 'MICKELIN', 'Joe', 'joe.dassens@gmail.com');
 
---Cadeaux
+-- Cadeaux
 INSERT INTO Cadeaux VALUES (1, 1, 'porte clé', 'porte_cles_1.png', 1000);
-INSERT INTO Cadeaux VALUES (1, 1, 'balle plastique', 'balle_plastique_1.png', 1000);
+INSERT INTO Cadeaux VALUES (2, 1, 'balle plastique', 'balle_plastique_1.png', 1000);
 
-INSERT INTO Cadeaux VALUES (1, 1, 'porte clé', 'porte_cles_2.png', 1000);
-INSERT INTO Cadeaux VALUES (1, 1, 'balle rebondissante', 'balle_rebondissante_1.png', 1000);
+INSERT INTO Cadeaux VALUES (3, 2, 'porte clé', 'porte_cles_2.png', 1000);
+INSERT INTO Cadeaux VALUES (4, 2, 'balle rebondissante', 'balle_rebondissante_1.png', 1000);
 
-INSERT INTO Cadeaux VALUES (1, 1, 'porte clé', 'porte_cles_3.png', 1000);
-INSERT INTO Cadeaux VALUES (1, 1, 'carte postale', 'carte_postale_1.png', 1000);
+INSERT INTO Cadeaux VALUES (5, 3, 'porte clé', 'porte_cles_3.png', 1000);
+INSERT INTO Cadeaux VALUES (6, 3, 'carte postale', 'carte_postale_1.png', 1000);
 
---Utilisateurs
-INSERT INTO Utilisateurs VALUES (1, 'damien.flahou@hotmail.com', 'damien', 'Damien', 'Flahou', '01/01/1993', 0, , 'Jeune cadre dynamique', 0, 0123456789, 0);
-INSERT INTO Utilisateurs VALUES (2, 'maichristine.hoang@gmail.com', 'mai', 'Mai', 'Hoang', '07/04/1994', 1, , 'Développeuse web Front-end', 0, 0246813579, 0);
-INSERT INTO Utilisateurs VALUES (1, 'paul.sfeir@gmail.com', 'paul', 'Paul', 'Sfeir', '01/06/1994', 0, , 'Jeune cadre dynamique', 1, 0987654321, 1000);
+-- Utilisateurs
+INSERT INTO Utilisateurs VALUES (1, 'damien.flahou@hotmail.com', 'damien', 'Damien', 'Flahou', '01/01/1993', 0, '', 'Jeune cadre dynamique', 0, 0123456789, 0);
+INSERT INTO Utilisateurs VALUES (2, 'maichristine.hoang@gmail.com', 'mai', 'Mai', 'Hoang', '07/04/1994', 1, '', 'Développeuse web Front-end', 0, 0246813579, 0);
+INSERT INTO Utilisateurs VALUES (3, 'paul.sfeir@gmail.com', 'paul', 'Paul', 'Sfeir', '01/06/1994', 0, '', 'Jeune cadre dynamique', 1, 0987654321, 1000);
 
 SET foreign_key_checks = 1;
