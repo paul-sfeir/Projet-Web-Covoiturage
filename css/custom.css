@@ -11,6 +11,11 @@
 	box-shadow: 1px 1px 8px #555;
 }
 
+#form_co_ins  form, #form_ins form, #form_recherche form {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
 
 
 /* Page connexion */
@@ -40,10 +45,6 @@
 	position: relative;
 }
 
-#form_co_ins  form, #form_ins form {
-	margin-left: 30px;
-}
-
 #form_co_ins input, #form_ins input {
 	width: 90%;
 }
@@ -59,6 +60,11 @@
 #form_ins {
 	margin-bottom: 8%;
 }
+
+
+
+/* Page résultats */
+
 
 
 
