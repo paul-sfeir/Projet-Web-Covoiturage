@@ -65,6 +65,39 @@
 
 /* Page résultats */
 
+#form_recherche select{
+	width: 100%;
+}
 
+.input_recherche {
+	width: 100%;
+}
+
+article {
+	margin-top: 25px;
+	margin-bottom: 20px;
+}
+
+.pseudo {
+	text-align: center;
+}
+
+.pseudo, .titre {
+	margin-top: 15px;
+}
+
+.img_user {
+	width: 150px;
+	margin: 0px 20px 20px 20px;
+}
+
+.info {
+	margin-left: 0px;
+	margin-bottom: 20px;
+}
+
+.options {
+	margin: 10px 0px 10px 30px;
+}
 
 
