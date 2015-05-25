@@ -101,3 +101,33 @@ article {
 }
 
 
+
+
+/* Page recherche avancée */
+
+.icones_options {
+	float: left;
+	margin: 0px 5px 0px 5px;
+}
+
+.icones_options .options {
+	margin: 0px 10px 0px 10px !important;
+}
+
+#form_recherche #datepicker {
+	width: 100%;
+}
+
+#proposition p {
+	margin: 20px;
+}
+
+#form_recherche, #proposition {
+	margin-top: 8%;
+	margin-bottom: 8%;
+}
+
+#form_recherche .button_search {
+	float: right;
+	margin-bottom: 20px;
+}
