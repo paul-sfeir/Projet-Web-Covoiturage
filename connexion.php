@@ -23,7 +23,7 @@ include "bdd.php";
 		<div class="row-fluid">
 			<ul class="inline">
 				<li>
-					<a href="index.html">
+					<a href="index.php">
 						<img src="Media/logo.png" id="nav_logo"/>
 					</a>
 				</li>

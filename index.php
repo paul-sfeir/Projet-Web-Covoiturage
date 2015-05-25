@@ -31,8 +31,9 @@
 		<!--Menu de connexion-->
 		<nav class="navaccueil">
 			<ul class="inline">
-				<li><a href="connexion.html">Connexion</a></li>
-				<li><a href="inscription.html">Inscription</a></li>
+				<?php
+                    include "boutons_connexion_header.php";
+                ?>
 			</ul>
 		</nav>
 		

@@ -27,7 +27,7 @@
 		<div class="row-fluid">
 			<ul class="inline">
 				<li>
-					<a href="index.html">
+					<a href="index.php">
 						<img src="Media/logo.png" id="nav_logo"/>
 					</a>
 				</li>
@@ -60,8 +60,9 @@
 					</a>
 				</li>
 				
-				<li id="connexion" class="menu_co"><a href="connexion.html">Connexion</a></li>
-				<li class="menu_co"><a href="inscription.html">Inscription</a></li>
+				<?php
+                    include "boutons_connexion_header.php";
+                ?>
 			</ul>
 			
 		</div>
