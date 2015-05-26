@@ -1,5 +1,4 @@
 <?php
-session_start();
 if(!isset($_SESSION['login'])){
     $_SESSION['login'] = 'anonyme';
 }
@@ -24,7 +23,7 @@ include "bdd.php";
 		<div class="row-fluid">
 			<ul class="inline">
 				<li>
-					<a href="index.html">
+					<a href="index.php">
 						<img src="Media/logo.png" id="nav_logo"/>
 					</a>
 				</li>
@@ -37,14 +36,14 @@ include "bdd.php";
 				</li>
 				
 				<li>
-					<a href="#recherche" id="nav_recherche2">
+					<a href="recherche.php" id="nav_recherche2">
 						<img src="Media/recherche.png" class="nav_icon" />
 						Trouver un covoiturage
 					</a>
 				</li>
 				
 				<li>
-					<a href="#proposer" id="nav_proposer2">
+					<a href="ajouter.php" id="nav_proposer2">
 						<img src="Media/proposer.png" class="nav_icon" />
 						Proposer un covoiturage
 					</a>

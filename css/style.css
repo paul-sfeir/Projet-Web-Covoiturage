@@ -82,6 +82,16 @@ h2 {
 	margin-right : 10px;
 	margin-left: 80%;
 	position: relative;
+	background-color: #4d4d4d;
+	border: 0;
+	padding: 10px;
+	color: white;
+	font-family: 'lobster_1.3regular';
+	font-size: 20px;
+}
+
+.button_search:hover {
+	background-color: black;
 }
 
 .navaccueil2 {
@@ -237,4 +247,6 @@ footer {
 #logo_upssitech {
 	height: 30px;
 }
+
+
 

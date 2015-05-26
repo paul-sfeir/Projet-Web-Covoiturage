@@ -54,7 +54,7 @@
 }
 
 #form_ins, #form_co_ins {
-	margin-top: 5%;
+	margin-top: 8%;
 }
 
 #form_ins {
@@ -70,7 +70,7 @@
 }
 
 .input_recherche {
-	width: 100%;
+	width: 97%;
 }
 
 article {
@@ -114,8 +114,21 @@ article {
 	margin: 0px 10px 0px 10px !important;
 }
 
+.icones_options span {
+	visibility: hidden;
+	position: absolute;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	font-family: 'caviar_dreamsregular';
+}
+
+.icones_options img:hover + span {
+	visibility: visible;
+}
+
 #form_recherche #datepicker {
-	width: 100%;
+	width: 97%;
 }
 
 #proposition p {
@@ -130,4 +143,22 @@ article {
 #form_recherche .button_search {
 	float: right;
 	margin-bottom: 20px;
+}
+
+
+
+/* Page proposer un covoiturage */
+
+#proposition form {
+	margin: 20px;
+}
+
+#proposition input {
+	width: 97%;
+}
+
+#proposition .button_search {
+	margin-bottom: 20px;
+	float: right;
+	width: auto;
 }

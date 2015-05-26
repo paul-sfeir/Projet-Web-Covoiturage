@@ -1,4 +1,11 @@
-﻿<!DOCTYPE HTML>
+﻿<?php
+if(!isset($_SESSION['login'])){
+    $_SESSION['login'] = 'anonyme';
+}
+include "bdd.php";
+?>
+
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>GoCars - Site de covoiturage étudiant</title>
@@ -66,7 +73,7 @@
 					</div>
 				
 					<div class="recherche_av span3">
-						<a href="#">Recherche avancée</a>
+						<a href="recherche.php">Recherche avancée</a>
 					</div>
 					
 					<div class="span1">
@@ -112,21 +119,21 @@
 			<div class="row-fluid">
 				<ul class="inline">
 					<li class="span3">
-						<a href="#resultats" id="nav_derniers">
+						<a href="#" id="nav_derniers">
 							<img src="Media/horloge.png" class="nav_icon" />
 							<p>Les derniers covoiturages</p>
 						</a>
 					</li>
 					
 					<li class="span3">
-						<a href="#recherche" id="nav_recherche">
+						<a href="recherche.php" id="nav_recherche">
 							<img src="Media/recherche.png" class="nav_icon" />
 							<p>Trouver un covoiturage</p>
 						</a>
 					</li>
 					
 					<li class="span3">
-						<a href="#proposer" id="nav_proposer">
+						<a href="ajouter.php" id="nav_proposer">
 							<img src="Media/proposer.png" class="nav_icon" />
 							<p>Proposer un covoiturage</p>
 						</a>
