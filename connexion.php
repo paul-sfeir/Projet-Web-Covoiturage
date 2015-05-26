@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!isset($_SESSION['login'])){
     $_SESSION['login'] = 'anonyme';
 }
@@ -75,9 +76,9 @@ include "bdd.php";
 				<input type="text" name="login"/>
 				
 				<label>Mot de passe</label>
-				<input type="text" name="password"/>
+				<input type="password" name="password"/>
 				
-				<input type="submit" value="Rechercher" class="button_search" />
+				<input type="submit" value="Connexion" class="button_search" />
 			</form>
 		</div>
 	</div>

@@ -33,21 +33,21 @@
 				</li>
 				
 				<li>
-					<a href="#resultats" id="nav_derniers2">
+					<a href="resultats.php" id="nav_derniers2">
 						<img src="Media/horloge.png" class="nav_icon" />
 						Les derniers covoiturages
 					</a>
 				</li>
 				
 				<li>
-					<a href="#recherche" id="nav_recherche2">
+					<a href="recherche.php" id="nav_recherche2">
 						<img src="Media/recherche.png" class="nav_icon" />
 						Trouver un covoiturage
 					</a>
 				</li>
 				
 				<li>
-					<a href="#proposer" id="nav_proposer2">
+					<a href="ajouter.php" id="nav_proposer2">
 						<img src="Media/proposer.png" class="nav_icon" />
 						Proposer un covoiturage
 					</a>

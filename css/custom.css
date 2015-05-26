@@ -135,7 +135,7 @@ article {
 	margin: 20px;
 }
 
-#form_recherche, #proposition {
+.form_gen , #proposition {
 	margin-top: 8%;
 	margin-bottom: 8%;
 }

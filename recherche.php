@@ -1,4 +1,5 @@
 ﻿<?php
+session_start();
 if(!isset($_SESSION['login'])){
     $_SESSION['login'] = 'anonyme';
 }
@@ -82,7 +83,7 @@ include "bdd.php";
 	<div id="container">
 	
 		<div class="row-fluid">
-			<div id="form_recherche" class="contenu span8">
+			<div id="form_recherche" class="contenu form_gen span8">
 				
 				<h2>Trouvez un covoiturage</h2>
 				
