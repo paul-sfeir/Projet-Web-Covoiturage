@@ -1,4 +1,14 @@
-﻿<head>
+﻿<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    $_SESSION['login'] = 'anonyme';
+}
+include "bdd.php";
+?>
+
+<!DOCTYPE HTML>
+<html>
+<head>
 	<title>Les derniers covoiturages - GoCars</title>
 	<meta charset="UTF-8">
 	
@@ -145,36 +155,43 @@
 					<hr/>
 					
 					<label>Options</label>
-					<div class="span6">
-						<input type="checkbox" name="fumeur" value="1"><img src="Media/nosmoking.png" class="options" alt="Non fumeur" />
+										<div class="icones_options">
+						<input type="checkbox" name="fumeur" value="1"><img src="Media/nosmoking.png" class="options" />
+						<span>Non fumeur</span>
 					</div>
 						
-					<div class="span5">
-						<input type="checkbox" name="animaux" value="1"><img src="Media/animaux.png" class="options" alt="Animaux autorisés" />
+					<div class="icones_options">
+						<input type="checkbox" name="animaux" value="1"><img src="Media/animaux.png" class="options" />
+						<span>Animaux autorisés</span>
 					</div>
 						
-					<div class="span6">
-						<input type="checkbox" name="hommes" value="1"><img src="Media/hommes.png" class="options" alt="Hommes seulement" />
+					<div class="icones_options">
+						<input type="checkbox" name="hommes" value="1"><img src="Media/hommes.png" class="options" />
+						<span>Hommes seulement</span>
 					</div>
 						
-					<div class="span5">
-						<input type="checkbox" name="femmes" value="1"><img src="Media/femmes.png" class="options" alt="Femmes seulement" />
+					<div class="icones_options">
+						<input type="checkbox" name="femmes" value="1"><img src="Media/femmes.png" class="options" /><span>Femmes seulement</span>
 					</div>
 						
-					<div class="span6">
-						<input type="checkbox" name="handicap" value="1"><img src="Media/handicap.png" class="options" alt="Handicapés" />
+					<div class="icones_options">
+						<input type="checkbox" name="handicap" value="1"><img src="Media/handicap.png" class="options"/>
+						<span>Handicapés pris en charge</span>
 					</div>
 						
-					<div class="span5">
-						<input type="checkbox" name="bagage" value="0"><img src="Media/s_baggage.png" class="options" alt="Petits baggages" />
+					<div class="icones_options">
+						<input type="checkbox" name="bagage" value="0"><img src="Media/s_baggage.png" class="options"/>
+						<span>Petits baggages</span> 
 					</div>
 						
-					<div class="span6">
-						<input type="checkbox" name="bagage" value="1"><img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
+					<div class="icones_options">
+						<input type="checkbox" name="bagage" value="1"><img src="Media/m_baggage.png" class="options" />
+						<span>Moyens baggages</span> 
 					</div>
 						
-					<div class="span5">
-						<input type="checkbox" name="bagage" value="2"><img src="Media/l_baggage.png" class="options" alt="Grands baggages" />
+					<div class="icones_options">
+						<input type="checkbox" name="bagage" value="2"><img src="Media/l_baggage.png" class="options" />
+						<span>Grands baggages</span>
 					</div>
 					
 					<input type="submit" value="Rechercher" class="button_search" />

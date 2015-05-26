@@ -107,11 +107,11 @@ article {
 
 .icones_options {
 	float: left;
-	margin: 0px 5px 0px 5px;
+	margin: 10px 0px 10px 0px;
 }
 
 .icones_options .options {
-	margin: 0px 10px 0px 10px !important;
+	margin: 0px 20px 0px 10px !important;
 }
 
 .icones_options span {
@@ -161,4 +161,26 @@ article {
 	margin-bottom: 20px;
 	float: right;
 	width: auto;
+}
+
+
+
+/* Page compte */
+
+#img_profile p {
+	text-align: center;
+}
+
+.petittitre {
+	font-family: 'caviar_dreamsregular';
+	font-size: 25px;
+}
+
+#historique  {
+	clear: left;
+	padding-top: 10px;
+}
+
+#score {
+	text-align: center;
 }

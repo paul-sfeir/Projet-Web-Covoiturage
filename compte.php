@@ -71,51 +71,97 @@ include "bdd.php";
 	<div id="container">
 	
 		<div class="row-fluid">
-			<div id="form_co_ins" class="contenu span4">
+			<div id="proposition" class="contenu span4">
 				
-				<h2>Déjà membre ?</h2>
+				<h2>Des cadeaux à gagner</h2>
 				
-				<form method="post">
-					<label>Identifiant</label>
-					<input type="text" name="login"/>
-					
-					<label>Mot de passe</label>
-					<input type="password" name="password"/>
-					
-					<input type="submit" value="Connexion" class="button_search" style="width: 140px"/>
-				</form>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+				
+				<p><a href="cadeau.php">Voir les cadeaux à gagner</a></p>
+				
+				<h2>Des partenaires</h2>
+				
+				<ul>
+					<li>Partenaire 1</li>
+					<li>Partenaire 2</li>
+					<li>Partenaire 3</li>
+				</ul>
 				
 			</div>
 			
 			
 			<div id="form_ins" class="contenu span8">
 			
-				<h2>Créez un nouveau compte</h2>
+				<div id="mesinfos">
+					<h2>Mes informations</h2>
+					
+					<div id="img_profile" class="span3">
+						<img src="Media/utilisateur.png" class="img_user" />
+						<p><a href="#">Modifier votre image</a></p>
+					</div>
+					
+					<div class="span5">
+						<p class="petittitre">Prénom Nom</p>
+						<p>Adresse email - <a href="#">Modifier</a></p>
+						<p>Mot de passe : *********** - <a href="#">Modifier</a></p>
+						<p>Adresse : XX voie nomvoie, XXXXX VILLE - <a href="#">Modifier</a></p>
+						<p>Téléphone : 01 23 45 67 89 - <a href="#">Modifier</a></p>
+					</div>
+					
+					<div id="score" class="span3">
+						<p class="petittitre">Score</p>
+						<p class="petittitre">XXpts</p>
+					</div>
+				</div>
 				
-				<form method="post">
-					<label>Vous êtes</label>
-					<select name="civilite">
-						<option value="0">Un homme</option>
-						<option value="1">Une femme</option>
-					</select>
+				<div id="historique">
+					<h2>Mon historique de covoiturages</h2>
+					<article><a href="#">
+						<div class="row-fluid">
+							<div class="span3">
+								<p class="pseudo">Pseudo</p>
+								<img src="Media/utilisateur.png" class="img_user" />
+							</div>
+							
+							<div class="span3">
+								<p class="titre">JJ/MM/AAAA</p>
+								<h2 class="info">10H00</h2>
+								<p><img src="Media/depart.png" width="30px"/>Départ</p>
+								<p>Informations voiture</p>
+							</div>
+							
+							<div class="span3">
+								<p class="titre">JJ/MM/AAAA</p>
+								<h2 class="info">2 places</h2>
+								<p><img src="Media/arrivee.png" width="30px"/>Arrivée</p>
+								<p>Informations voiture</p>
+							</div>
+							
+							<div id="options" class="span3">
+								<div class="span6">
+									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
+								</div>
+								<div class="span6">
+									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
+								</div>
+								<div class="span6">
+									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
+								</div>
+								<div class="span6">
+									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
+								</div>
+							</div>
+						</div>
+						</a>
+					</article>
+				</div>
+				
+				
+				<div id="avis">
+					<h2>Avis des utilisateurs</h2>
 					
-					<label>Nom</label>
-					<input type="text" name="nom"/>
 					
-					<label>Prénom</label>
-					<input type="text" name="prenom"/>
-					
-                    <label>Email</label>
-					<input type="email" name="email"/>
-					
-					<label>Mot de passe</label>
-					<input type="password" name="password2"/>
-					
-					<label>Confirmez votre mot de passe</label>
-					<input id="pass" type="password" name="confirmation"/>
-					
-					<input type="submit" value="Inscription" class="button_search" style="width: 140px"/>
-				</form>
+				</div>
 			
 			</div>
 			
