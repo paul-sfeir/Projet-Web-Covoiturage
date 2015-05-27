@@ -65,7 +65,9 @@ include "bdd.php";
 				</li>
 				
 				<li>
-					<a href="#compte" id="nav_compte2">
+					<?php
+						include "boutons_compte_header.php";
+					?>
 						<img src="Media/compte.png" class="nav_icon" />
 						Mon compte
 					</a>
