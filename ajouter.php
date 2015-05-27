@@ -237,17 +237,10 @@ include "bdd.php";
 			
 			<div id="proposition" class="span4 contenu">
 			
-				<h2>Déjà membre ?</h2>
+				<h2>Consultez</h2>
 				
-				<form method="post" name="connexion">
-					<label>Identifiant</label>
-					<input type="text" name="login"/>
-					
-					<label>Mot de passe</label>
-					<input type="text" name="password"/>
-					
-					<input type="submit" value="Rechercher" class="button_search" />
-				</form>
+				<p>également la liste des derniers covoiturages les plus récents mis en ligne par les internautes du site.</p>
+				<p><a href="#resultats">Les derniers covoiturages</a></p>
 			</div>
 			
 			</div>
