@@ -160,6 +160,26 @@ include "bdd.php";
 				<div id="avis">
 					<h2>Avis des utilisateurs</h2>
 					
+					<article>
+						<hr/>
+						
+						<div>
+							<p class="petittitre">Pseudo</p>
+						</div>
+						
+						<div class="comment">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+						
+						<hr/>
+					</article>
+					
+					<h2>Ajouter un commentaire</h2>
+					
+					<form>
+						<textarea name="commentaire" placeholder="Ville, code postal..."></textarea>
+						<input type="submit" value="Poster" class="button_search" />
+					</form>
 					
 				</div>
 			

@@ -181,6 +181,30 @@ article {
 	padding-top: 10px;
 }
 
+#historique article:hover{
+	background-color: #EEEFEF;
+}
+
+#historique a {
+	color: black;
+}
+
 #score {
 	text-align: center;
+}
+
+#avis article {
+	margin: 20px;
+}
+
+#avis textarea {
+	width: 100%;
+	height: 150px;
+}
+
+#avis .button_search {
+	width: auto;
+	margin-left: 0;
+	margin-bottom: 20px;
+	float: right;
 }
