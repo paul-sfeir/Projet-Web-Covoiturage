@@ -5,7 +5,9 @@ if($_SESSION['login'] == 'anonyme'){
     echo " <li class='menu_co'><a href='inscription.php'>Inscription</a></li> ";
 }
 else{
-    echo " <li id='connexion' class='menu_co'><a href='compte.php?id=".$_SESSION["id_utilisateurs"]."'>".$_SESSION["prenom"]." ".$_SESSION["nom"]." </a></li>";
-    echo " <li class='menu_co'><a href='deconnexion.php'>Déconnexion</a></li>";
+	if(isset($_SESSION['login'])) {
+		echo " <li id='connexion' class='menu_co'><a href='compte.php?id=".$_SESSION['id_utilisateurs']."'>".$_SESSION['prenom']." ".$_SESSION['nom']." </a></li>";
+		echo " <li class='menu_co'><a href='deconnexion.php'>Déconnexion</a></li>";
+	}
 }
 ?>

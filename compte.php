@@ -96,9 +96,24 @@ include "bdd.php";
 				<h2>Des partenaires</h2>
 				
 				<ul>
-					<li>Partenaire 1</li>
-					<li>Partenaire 2</li>
-					<li>Partenaire 3</li>
+					<li><a href="javascript:visibilite('partenaire1')">Partenaire 1</a></li>
+						<!--Seul l'admin peut modifier les infos partenaires-->
+						<div id="partenaire1" style="display:none">
+							<p>Prénom Nom - <a href="#">Modifier</a></p>
+							<p>Adresse email - <a href="#">Modifier</a></p>
+						</div>
+						
+					<li><a href="javascript:visibilite('partenaire2')">Partenaire 2</a></li>
+						<div id="partenaire2" style="display:none">
+							<p>Prénom Nom - <a href="#">Modifier</a></p>
+							<p>Adresse email - <a href="#">Modifier</a></p>
+						</div>
+						
+					<li><a href="javascript:visibilite('partenaire3')">Partenaire 3</a></li>
+						<div id="partenaire2" style="display:none">
+							<p>Prénom Nom - <a href="#">Modifier</a></p>
+							<p>Adresse email - <a href="#">Modifier</a></p>
+						</div>
 				</ul>
 				
 			</div>

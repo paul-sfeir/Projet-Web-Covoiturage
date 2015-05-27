@@ -71,7 +71,7 @@ include "bdd.php";
 			
 			<h2>Déjà membre ?</h2>
 			
-			<form method="post" name="connexion">
+			<form method="post" action="connexion.php" name="connexion">
 				<label>Identifiant</label>
 				<input type="text" name="login"/>
 				
@@ -94,22 +94,25 @@ include "bdd.php";
 </html>
 
 <?php 
+
     if(isset($_POST['login']) && isset($_POST['password'])){
         $login = $_POST['login'];
         $pass = $_POST['password'];
         
-        $query = "SELECT email, photo, prenom, nom FROM Utilisateurs WHERE email = '".$login."' AND password = '".$pass."';";
+        $query = "SELECT id_utilisteurs, email, photo, prenom, nom FROM Utilisateurs WHERE email = '$login' AND password = '$pass';";
+		
 
         $result = mysqli_query($conn, $query);
         
         $tabInfoUtilisateur = mysqli_fetch_assoc($result);
          
         if($tabInfoUtilisateur != NULL){
+			$_SESSION['id_utilisateurs'] = $tabInfoUtilisateur['id_utilisteurs'];
             $_SESSION['login'] = $tabInfoUtilisateur['email'];
             $_SESSION['photo'] = $tabInfoUtilisateur['photo'];
             $_SESSION['prenom'] = $tabInfoUtilisateur['prenom'];
             $_SESSION['nom'] = $tabInfoUtilisateur['nom'];
-            header("Location: index.php");
+			
         }
      
     }
