@@ -131,7 +131,7 @@ article {
 	width: 97%;
 }
 
-#proposition p {
+#proposition p , #partenaires p{
 	margin: 20px;
 }
 
@@ -149,7 +149,7 @@ article {
 
 /* Page proposer un covoiturage */
 
-#proposition form {
+#proposition form, #avis form {
 	margin: 20px;
 }
 
@@ -207,4 +207,8 @@ article {
 	margin-left: 0;
 	margin-bottom: 20px;
 	float: right;
+}
+
+#admin {
+	padding-top: 50px;
 }

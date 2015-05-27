@@ -15,6 +15,20 @@ include "bdd.php";
 	<link href="css/custom.css" rel="stylesheet" type="text/css"><!--Style contenu-->
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> <!--Bibliothèque jQuery--> 
 	
+	<script type="text/javascript">
+		//Fonction qui dévoile une div
+		function visibilite(thingId)
+			{
+				var targetElement;
+				targetElement = document.getElementById(thingId) ;
+				if (targetElement.style.display == "none")
+					{
+						targetElement.style.display = "" ;
+				} else {
+						targetElement.style.display = "none" ;
+				}
+			}
+</script>
 </head>
 
 <body>
@@ -71,7 +85,7 @@ include "bdd.php";
 	<div id="container">
 	
 		<div class="row-fluid">
-			<div id="proposition" class="contenu span4">
+			<div id="partenaires" class="contenu span4">
 				
 				<h2>Des cadeaux à gagner</h2>
 				
@@ -90,7 +104,7 @@ include "bdd.php";
 			</div>
 			
 			
-			<div id="form_ins" class="contenu span8">
+			<div id="user_account" class="contenu span8">
 			
 				<div id="mesinfos">
 					<h2>Mes informations</h2>
@@ -169,6 +183,10 @@ include "bdd.php";
 						
 						<div class="comment">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							
+							<!--Seulement pour l'admin-->
+							<p><a href="#">Supprimer</a></p>
+							<!--Fin de l'admin-->
 						</div>
 						
 						<hr/>
@@ -182,6 +200,22 @@ include "bdd.php";
 					</form>
 					
 				</div>
+				
+				<!--Seulement pour l'admin-->
+				<div id="admin">
+
+					<h2><a href="javascript:visibilite('userslist')">Accéder à la liste des utilisateurs</a></h2>
+					<div id="userslist" style="display:none">
+						<ul>
+							<li><a href="#">Utilisateur</a></li>
+							<li><a href="#">Utilisateur</a></li>
+							<li><a href="#">Utilisateur</a></li>
+							<li><a href="#">Utilisateur</a></li>
+						</ul>
+					</div>
+					
+				</div>
+				<!--Fin seulement pour l'admin-->
 			
 			</div>
 			
