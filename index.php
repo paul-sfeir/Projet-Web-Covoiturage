@@ -34,7 +34,7 @@ include "bdd.php";
 	<!--Haut de la page-->
 	<div id="accueil">
         
-		<div class="logo"><a href="index.html"><img src="Media/logo.png" id="logoaccueil" /></a></div>
+		<div class="logo"><a href="index.php"><img src="Media/logo.png" id="logoaccueil" /></a></div>
 		
 		<!--Menu de connexion-->
 		<nav class="navaccueil">
