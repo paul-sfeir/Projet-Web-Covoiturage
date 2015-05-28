@@ -95,6 +95,7 @@ include "bdd.php";
 
 </html>
 
+
 <?php 
 
     if(isset($_POST['login']) && isset($_POST['password'])){
@@ -114,8 +115,10 @@ include "bdd.php";
             $_SESSION['photo'] = $tabInfoUtilisateur['photo'];
             $_SESSION['prenom'] = $tabInfoUtilisateur['prenom'];
             $_SESSION['nom'] = $tabInfoUtilisateur['nom'];
+			header('Location: index.php');
 			
         }
      
     }
+
 ?>
