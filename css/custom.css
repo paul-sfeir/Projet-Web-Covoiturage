@@ -149,7 +149,7 @@ article {
 
 /* Page proposer un covoiturage */
 
-#proposition form, #avis form {
+#proposition form, #avis form, #ajout_cadeaux form {
 	margin: 20px;
 }
 
@@ -167,7 +167,7 @@ article {
 
 /* Page compte */
 
-#img_profile p {
+.img_profile p {
 	text-align: center;
 }
 
@@ -223,4 +223,19 @@ article {
 	font-weight: initial;
 	float: right;
 	margin-right: 20px;
+}
+
+
+
+/* Page cadeaux */
+.cadeaux {
+	padding-top: 20px;
+}
+
+#score p {
+	text-align: right;
+}
+
+#ajout_cadeaux input , #ajout_cadeaux select{
+	width: 95%;
 }
