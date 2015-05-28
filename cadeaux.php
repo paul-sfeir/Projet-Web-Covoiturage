@@ -121,119 +121,58 @@ include "bdd.php";
 			</div>
 			
 			
-			<div id="user_account" class="contenu span8">
+			<div id="cadeaux" class="span8">
 			
-				<div id="mesinfos">
-					<h2>Mes informations <a href="#" class="modif">Supprimer</a><a href="#" class="modif">Modifier</a></h2>
-					
-					<div id="img_profile" class="span3">
-						<img src="Media/utilisateur.png" class="img_user" />
-						<p><a href="#">Modifier votre image</a></p>
-					</div>
-					
-					<div class="span5">
-						<p class="petittitre">Prénom Nom</p>
-						<p>Adresse email</p>
-						<p>Mot de passe : ***********</p>
-						<p>Adresse : XX voie nomvoie, XXXXX VILLE</p>
-						<p>Téléphone : 01 23 45 67 89</p>
-					</div>
-					
-					<div id="score" class="span3">
-						<p class="petittitre">Score</p>
-						<p class="petittitre">XXpts</p>
-					</div>
-				</div>
+				<h2>Les cadeaux à gagner</h2>
 				
-				<div id="historique">
-					<h2>Mon historique de covoiturages</h2>
-					<article><a href="#">
-						<div class="row-fluid">
-							<div class="span3">
-								<p class="pseudo">Pseudo</p>
-								<img src="Media/utilisateur.png" class="img_user" />
-							</div>
-							
-							<div class="span3">
-								<p class="titre">JJ/MM/AAAA</p>
-								<h2 class="info">10H00</h2>
-								<p><img src="Media/depart.png" width="30px"/>Départ</p>
-								<p>Informations voiture</p>
-							</div>
-							
-							<div class="span3">
-								<p class="titre">JJ/MM/AAAA</p>
-								<h2 class="info">2 places</h2>
-								<p><img src="Media/arrivee.png" width="30px"/>Arrivée</p>
-								<p>Informations voiture</p>
-							</div>
-							
-							<div id="options" class="span3">
-								<div class="span6">
-									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-								</div>
-								<div class="span6">
-									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-								</div>
-								<div class="span6">
-									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-								</div>
-								<div class="span6">
-									<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-								</div>
-							</div>
-						</div>
-						</a>
-					</article>
-				</div>
+				<article class="cadeaux contenu">
 				
-				
-				<div id="avis">
-					<h2>Avis des utilisateurs</h2>
-					
-					<article>
-						<hr/>
-						
-						<div>
-							<p class="petittitre">Pseudo</p>
+					<div class="row-fluid">
+						<div id="img_profile" class="span3">
+							<img src="Media/utilisateur.png" class="img_user" />
 						</div>
 						
-						<div class="comment">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							
-							<!--Seulement pour l'admin-->
-							<p><a href="#">Supprimer</a></p>
-							<!--Fin de l'admin-->
+						<div class="span5">
+							<p class="petittitre">Nom du cadeau</p>
 						</div>
 						
-						<hr/>
-					</article>
+						<div id="score" class="span3">
+							<p class="petittitre">XXGo</p>
+							<p><input type="submit" value="Commander" class="button_search" /></p>
+							<p style="margin-right: -20px;"><a href="#">Supprimer</a> - <a href="#">Modifier</a></p>
+						</div>
+						
+					</div>
 					
-					<h2>Ajouter un commentaire</h2>
+				</article>
+				
+				<div id="ajout_cadeaux" class="contenu">
+					<h2>Ajouter un cadeau</h2>
 					
 					<form>
-						<textarea name="commentaire" placeholder="Ville, code postal..."></textarea>
-						<input type="submit" value="Poster" class="button_search" />
+						<div class="row-fluid">
+							<div class="span5">
+								<label>Intitulé</label>
+								<input type="text" name="nom_cadeau"/>
+							</div>
+							
+							<div class="span5">
+								<label>Partenaire</label>
+								<select name="partenaire">
+									<option>Nom partenaire</option>
+									<option>Nom partenaire</option>
+									<option>Nom partenaire</option>
+								</select>
+							</div>
+							
+							<div class="span2">
+								<label>Prix</label>
+								<input type="text" name="score"/>
+							</div>
+						</div>
 					</form>
-					
 				</div>
 				
-				<!--Seulement pour l'admin-->
-				<div id="admin">
-
-					<h2><a href="javascript:visibilite('userslist')">Accéder à la liste des utilisateurs</a></h2>
-					<div id="userslist" style="display:none">
-						<ul>
-							<li><a href="#">Utilisateur</a></li>
-							<li><a href="#">Utilisateur</a></li>
-							<li><a href="#">Utilisateur</a></li>
-							<li><a href="#">Utilisateur</a></li>
-						</ul>
-					</div>
-					
-				</div>
-				<!--Fin seulement pour l'admin-->
-			
 			</div>
 			
 		</div>
