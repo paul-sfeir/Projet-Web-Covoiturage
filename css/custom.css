@@ -212,3 +212,15 @@ article {
 #admin {
 	padding-top: 50px;
 }
+
+
+
+/* Page trajet */
+
+.modif  {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	font-weight: initial;
+	float: right;
+	margin-right: 20px;
+}

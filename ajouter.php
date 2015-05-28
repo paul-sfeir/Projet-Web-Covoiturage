@@ -1,13 +1,8 @@
-<?php
+﻿<?php
 session_start();
 if(!isset($_SESSION['login'])){
     $_SESSION['login'] = 'anonyme';
 }
-
-if($_SESSION['login'] = 'anonyme'){
-   header('Location: inscription.php');
-}
-
 include "bdd.php";
 ?>
 
@@ -94,7 +89,7 @@ include "bdd.php";
 				
 				<h2>Proposez un covoiturage</h2>
 				
-				<form method="post" action="ajouter.php">
+				<form>
 					<div class="span6">
 						<label>Départ</label>
 						<input type="text" class="input_recherche" name="depart" placeholder="Ville, code postal..."/>
@@ -112,8 +107,8 @@ include "bdd.php";
 						</div>
 						
 						<div class="span6">
-							<label>Heure</label>
-							<select name="heure">
+							<label>A partir de</label>
+							<select>
 								<option>4h</option>
 								<option>4h30</option>
 								<option>5h</option>
@@ -169,7 +164,7 @@ include "bdd.php";
 					
 						<div class="span4">
 							<label>Nombre de places disponibles</label>
-							<select name="nombre_places">
+							<select>
 								<option> </option>
 								<option>1</option>
 								<option>2</option>
@@ -256,37 +251,3 @@ include "bdd.php";
 </body>
 
 </html>
-
-<?php
-    if(isset($_POST['depart']) && isset($_POST['arrivee']) && isset($_POST['date']) && isset($_POST['heure']) && isset($_POST['nombre_places'])){
-        $login = $_POST['depart'];
-        $pass = $_POST['arrivee'];
-        $login = $_POST['date'];
-        $pass = $_POST['heure'];
-        $login = $_POST['nombre_places'];
-        $pass = $_POST['fumeur'];
-        $login = $_POST['animaux'];
-        $pass = $_POST['homme'];
-        $login = $_POST['femme'];
-        $pass = $_POST['handicap'];
-        $login = $_POST['bagage'];
-        
-        $query = "INSERT INTO TRAJETS (";
-		
-
-        $result = mysqli_query($conn, $query);
-        
-        $tabInfoUtilisateur = mysqli_fetch_assoc($result);
-         
-        if($tabInfoUtilisateur != NULL){
-			$_SESSION['id_utilisateurs'] = $tabInfoUtilisateur['id_utilisteurs'];
-            $_SESSION['login'] = $tabInfoUtilisateur['email'];
-            $_SESSION['photo'] = $tabInfoUtilisateur['photo'];
-            $_SESSION['prenom'] = $tabInfoUtilisateur['prenom'];
-            $_SESSION['nom'] = $tabInfoUtilisateur['nom'];
-			
-        }
-     
-    }
-
-?>
