@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Reserver` (
   `id_reservation` INT NOT NULL AUTO_INCREMENT,
   `id_passager` INT NOT NULL,
-  `id_trajet` INT NULL,
+  `id_trajet` INT,
   PRIMARY KEY (`id_reservation`),
   INDEX `fk_Reserver_1_idx` (`id_passager` ASC),
   INDEX `fk_Reserver_2_idx` (`id_trajet` ASC),
@@ -112,7 +112,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Proposer` (
   `id_proposer` INT NOT NULL AUTO_INCREMENT,
   `id_conducteur` INT NULL,
-  `id_trajet` INT NULL,
+  `id_trajet` INT,
   INDEX `fk_Proposer_1_idx` (`id_trajet` ASC),
   PRIMARY KEY (`id_proposer`),
   CONSTRAINT `fk_Proposer_1`
@@ -212,24 +212,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Noter` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Etapes`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Etapes` (
-  `id_etapes` INT NOT NOT NULL AUTO_INCREMENT,
-  `id_trajet` INT NULL,
-  `ville_etape` VARCHAR(100) NULL,
-  PRIMARY KEY (`id_etapes`),
-  INDEX `fk_Etapes_1_idx` (`id_trajet` ASC),
-  CONSTRAINT `fk_Etapes_1`
-    FOREIGN KEY (`id_trajet`)
-    REFERENCES `mydb`.`Trajets` (`id_trajets`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
