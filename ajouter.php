@@ -177,16 +177,7 @@ include "bdd.php";
 								<option>9</option>
 							</select>
 						</div>
-						
-						<div class="span4">
-							<label>Type de trajet</label>
-							<select>
-								<option> </option>
-								<option>Aller simple</option>
-								<option>Aller-retour</option>
-								<option>Trajet régulier</option>
-							</select>
-						</div>
+			
 					</div>
 					
 					<hr/>
