@@ -1,8 +1,13 @@
-﻿<?php
+<?php
 session_start();
 if(!isset($_SESSION['login'])){
     $_SESSION['login'] = 'anonyme';
 }
+
+if($_SESSION['login'] == 'anonyme'){
+   header('Location: inscription.php');
+}
+
 include "bdd.php";
 ?>
 
@@ -89,7 +94,7 @@ include "bdd.php";
 				
 				<h2>Proposez un covoiturage</h2>
 				
-				<form>
+				<form method="post" action="ajouter.php">
 					<div class="span6">
 						<label>Départ</label>
 						<input type="text" class="input_recherche" name="depart" placeholder="Ville, code postal..."/>
@@ -107,49 +112,49 @@ include "bdd.php";
 						</div>
 						
 						<div class="span6">
-							<label>A partir de</label>
-							<select>
-								<option>4h</option>
-								<option>4h30</option>
-								<option>5h</option>
-								<option>5h30</option>
-								<option>6h</option>
-								<option>6h30</option>
-								<option>7h</option>
-								<option>7h30</option>
-								<option>8h</option>
-								<option>8h30</option>
-								<option>9h</option>
-								<option>9h30</option>
-								<option>10h</option>
-								<option>10h30</option>
-								<option>11h</option>
-								<option>11h30</option>
-								<option>12h</option>
-								<option>12h30</option>
-								<option>13h</option>
-								<option>13h30</option>
-								<option>14h</option>
-								<option>14h30</option>
-								<option>15h</option>
-								<option>15h30</option>
-								<option>16h</option>
-								<option>16h30</option>
-								<option>17h</option>
-								<option>17h30</option>
-								<option>18h</option>
-								<option>18h30</option>
-								<option>19h</option>
-								<option>19h30</option>
-								<option>20h</option>
-								<option>20h30</option>
-								<option>21h</option>
-								<option>21h30</option>
-								<option>22h</option>
-								<option>22h30</option>
-								<option>23h</option>
-								<option>23h30</option>
-								<option>00h</option>
+							<label>Heure</label>
+							<select name="heure">
+								<option value = "4">4h</option>
+								<option value = "4">4h30</option>
+								<option value = "5">5h</option>
+								<option value = "5">5h30</option>
+								<option value = "6">6h</option>
+								<option value = "6">6h30</option>
+								<option value = "7">7h</option>
+								<option value = "7">7h30</option>
+								<option value = "8">8h</option>
+								<option value = "8">8h30</option>
+								<option value = "9">9h</option>
+								<option value = "9">9h30</option>
+								<option value = "10">10h</option>
+								<option value = "10">10h30</option>
+								<option value = "11">11h</option>
+								<option value = "11">11h30</option>
+								<option value = "12">12h</option>
+								<option value = "13">12h30</option>
+								<option value = "13">13h</option>
+								<option value = "14">13h30</option>
+								<option value = "14">14h</option>
+								<option value = "15">14h30</option>
+								<option value = "15">15h</option>
+								<option value = "15">15h30</option>
+								<option value = "16">16h</option>
+								<option value = "16">16h30</option>
+								<option value = "17">17h</option>
+								<option value = "17">17h30</option>
+								<option value = "18">18h</option>
+								<option value = "18">18h30</option>
+								<option value = "19">19h</option>
+								<option value = "19">19h30</option>
+								<option value = "20">20h</option>
+								<option value = "20">20h30</option>
+								<option value = "21">21h</option>
+								<option value = "21">21h30</option>
+								<option value = "22">22h</option>
+								<option value = "22">22h30</option>
+								<option value = "23">23h</option>
+								<option value = "23">23h30</option>
+								<option value = "0">00h</option>
 							</select>
 						</div>
 					</div>
@@ -164,17 +169,17 @@ include "bdd.php";
 					
 						<div class="span4">
 							<label>Nombre de places disponibles</label>
-							<select>
-								<option> </option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-								<option>6</option>
-								<option>7</option>
-								<option>8</option>
-								<option>9</option>
+							<select name="nombre_places">
+								<option value = "0"> </option>
+								<option value = "1">1</option>
+								<option value = "2">2</option>
+								<option value = "3">3</option>
+								<option value = "4">4</option>
+								<option value = "5">5</option>
+								<option value = "6">6</option>
+								<option value = "7">7</option>
+								<option value = "8">8</option>
+								<option value = "9">9</option>
 							</select>
 						</div>
 			
@@ -208,17 +213,11 @@ include "bdd.php";
 					</div>
 						
 					<div class="icones_options">
-						<input type="checkbox" name="bagage" value="0"><img src="Media/s_baggage.png" class="options"/>
+						<input type="radio" id="bagage" name="bagage" value="1"><img src="Media/s_baggage.png" class="options"/>
 						<span>Petits baggages</span> 
-					</div>
-						
-					<div class="icones_options">
-						<input type="checkbox" name="bagage" value="1"><img src="Media/m_baggage.png" class="options" />
-						<span>Moyens baggages</span> 
-					</div>
-						
-					<div class="icones_options">
-						<input type="checkbox" name="bagage" value="2"><img src="Media/l_baggage.png" class="options" />
+                        <input type="radio" id="bagage" name="bagage" value="2"><img src="Media/m_baggage.png" class="options" />
+						<span>Moyens baggages</span>
+                        <input type="radio" id="bagage" name="bagage" value="3"><img src="Media/l_baggage.png" class="options" />
 						<span>Grands baggages</span>
 					</div>
 					
@@ -251,3 +250,46 @@ include "bdd.php";
 </body>
 
 </html>
+
+<?php  
+    if(isset($_POST['depart']) && $_POST['depart'] != "" && isset($_POST['arrivee']) && $_POST['arrivee'] != "" && isset($_POST['date']) && $_POST['date'] != "" && isset($_POST['voiture']) && $_POST['voiture'] != "" && $_POST['nombre_places'] != 0){
+        
+        $depart = $_POST['depart'];
+        $arrivee = $_POST['arrivee'];
+        $date = $_POST['date'];
+        $heure = $_POST['heure'];
+        $nombrePlaces = $_POST['nombre_places'];
+        $modeleVoiture = $_POST['voiture'];
+        
+        $fumeur = (isset($_POST['fumeur'])) ? 1 : 0;
+        $animaux = (isset($_POST['animaux'])) ? 1 : 0;
+        $homme = (isset($_POST['hommes'])) ? 1 : 0;
+        $femme = (isset($_POST['femmes'])) ? 1 : 0;
+        $handicap = (isset($_POST['handicap'])) ? 1 : 0;
+        $bagage = (isset($_POST['bagage'])) ? $_POST['bagage'] : 0;
+        
+        $date1 = date("Y/m/d");
+        
+        if(mktime($date1) > mktime($date)){
+        
+            //Crée le nouveau trajet
+            $query = "INSERT INTO Trajets (`nombres_places`, `modele_voiture`, `date_depart`, `ville_depart`, `ville_arrivee`, `fumeur_auth`, `animal_auth`, `handicape_auth`, `femmes_uniquement`, `hommes_uniquement`, `taille_bagage`, `dates_publication`) VALUES ($nombrePlaces, '$modeleVoiture', $date, '$depart', '$arrivee', $fumeur, $animaux, $handicap, $femme, $homme, $bagage, $date1);";
+
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+                
+                //Si le trajet a bien été crée, ajoute dans la table proposer le trajet
+                $idTrajet = mysqli_insert_id($conn);
+                $idUtilisateur = $_SESSION['id_utilisateurs'];
+               
+                $query = "INSERT INTO Proposer (`id_conducteur`, `id_trajets`) VALUES($idUtilisateur, $idTrajet);";
+                
+                $result = mysqli_query($conn, $query);
+                //Envoie l'utilisateur sur le détail de son trajet
+                echo"test";
+                die("<script>location.href = 'trajet.php?id=$idTrajet'</script>");
+            }
+        }
+    }
+?>
