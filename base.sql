@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Trajets` (
   `nombres_places` INT NULL,
   `modele_voiture` VARCHAR(45) NULL,
   `date_depart` VARCHAR(45) NULL,
+  `heure_depart` INT,
   `ville_depart` VARCHAR(45) NULL,
   `ville_arrivee` VARCHAR(45) NULL,
   `fumeur_auth` TINYINT(1) NULL,
