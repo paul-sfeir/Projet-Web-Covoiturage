@@ -115,6 +115,7 @@ include "bdd.php";
             $_SESSION['photo'] = $tabInfoUtilisateur['photo'];
             $_SESSION['prenom'] = $tabInfoUtilisateur['prenom'];
             $_SESSION['nom'] = $tabInfoUtilisateur['nom'];
+			$_SESSION['type_compte'] = $tabInfoUtilisateur['type_compte'];
 			header('Location: index.php');
 			
         }

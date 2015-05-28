@@ -239,3 +239,7 @@ article {
 #ajout_cadeaux input , #ajout_cadeaux select{
 	width: 95%;
 }
+
+#ajout_cadeaux .button_search {
+	margin-bottom: 20px;
+}

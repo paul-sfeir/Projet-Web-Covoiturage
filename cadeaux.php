@@ -149,7 +149,7 @@ include "bdd.php";
 				<div id="ajout_cadeaux" class="contenu">
 					<h2>Ajouter un cadeau</h2>
 					
-					<form>
+					<form action="cadeaux.php" method="post" enctype="multipart/form-data">
 						<div class="row-fluid">
 							<div class="span5">
 								<label>Intitulé</label>
@@ -168,6 +168,15 @@ include "bdd.php";
 							<div class="span2">
 								<label>Prix</label>
 								<input type="text" name="score"/>
+							</div>
+							
+							<div class="span5">
+								<label>Image</label>
+								<input type="file" name="image"/>
+							</div>
+							
+							<div class="span2">
+								<input type="submit" value="Valider" class="button_search" />
 							</div>
 						</div>
 					</form>
@@ -188,63 +197,3 @@ include "bdd.php";
 </body>
 
 </html>
-
-<?php
-/*
-                                echo '<script>
-                                function checkPasswordMatch() {
-                                    var password = $("#passord2").val();
-                                    var confirmPassword = $("#confirmation").val();
-
-                                    if (password != confirmPassword)
-                                        document.getElementById("pass").style.color = "blue";
-                                }
-                                $(document).ready(function () {
-                                    $("#txtConfirmPassword").keyup(checkPasswordMatch);
-                                });
-                                </script>';*/
-
-//Partie connexion
-    if(isset($_POST['login']) && isset($_POST['password'])){
-        $login = $_POST['login'];
-        $pass = $_POST['password'];
-        
-        $query = "SELECT email, photo, prenom, nom FROM Utilisateurs WHERE email = '".$login."' AND password = '".$pass."';";
-
-        $result = mysqli_query($conn, $query);
-        
-        $tabInfoUtilisateur = mysqli_fetch_assoc($result);
-         
-        if($tabInfoUtilisateur != NULL){
-            $_SESSION['login'] = $tabInfoUtilisateur['email'];
-            $_SESSION['photo'] = $tabInfoUtilisateur['photo'];
-            $_SESSION['prenom'] = $tabInfoUtilisateur['prenom'];
-            $_SESSION['nom'] = $tabInfoUtilisateur['nom'];
-            header("Location: index.php");
-        }
-    }
-    
-//Partie inscription
-    if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password2']) && isset($_POST['confirmation'])){
-        $civilite = $_POST['civilite'];
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $mail = $_POST['email'];
-        $password2 = $_POST['password2'];
-        $confirmation = $_POST['confirmation'];
-        
-        //test si les passwords sont identiques
-        if($password2 == $confirmation){
-            $verifAdresseMail = "SELECT COUNT(*) FROM Utilisateurs WHERE email = '".$mail."';";
-            $result = mysqli_query($conn, $query);
-            if(result == 0){
-            
-                $query = "INSERT INTO Utilisateurs (`email`, `password`, `prenom`, `nom`, `civilite`, `type_compte`, `score`) VALUES ('".$mail."', '".$password2."', '".$prenom."', '".$nom."', '".$civilites."', 1, 0);";
-
-                $result = mysqli_query($conn, $query);
-
-                header("Location: connexion.php");
-            }
-        }
-    }
-?>
