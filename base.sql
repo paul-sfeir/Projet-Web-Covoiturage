@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Trajets` (
   `femmes_uniquement` TINYINT(1) NULL,
   `hommes_uniquement` TINYINT(1) NULL,
   `taille_bagage` VARCHAR(45) NULL,
-  `dates_publication` DATE NULL,
+  `dates_publication` VARCHAR(45) NULL,
   PRIMARY KEY (`id_trajets`))
 ENGINE = InnoDB;
 

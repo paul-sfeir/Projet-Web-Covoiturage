@@ -236,6 +236,7 @@ include "bdd.php";
                             echo "<h2>Les derniers covoiturages</h2>";
                             
                             $query = "Select * from Trajets order by dates_publication;";
+
                             $arrayTrajets = mysqli_query($conn, $query);
                             $numRow = mysqli_num_rows($arrayTrajets);
                         
@@ -261,11 +262,79 @@ include "bdd.php";
                                 
                                 echo "' class='img_user' />
 						                  </div>";
-						        $date = $data->date_depart;
-                                $dateDepart =  date("d/m", strtotime($date));
 						        
                                 echo "<div class='span3'>
-                                <p class='titre'>$dateDepart</p>
+                                <p class='titre'>$data->date_depart</p>
+                                <h2 class='info'>$data->heure_depart</h2>
+                                <p><img src='Media/depart.png' width='30px'/>$data->ville_depart</p>
+                                <p>$data->modele_voiture</p>
+						          </div>";
+						
+						          echo "<div class='span3'>
+                                    <p> </p>
+                                    <h2 class='info'>$data->nombres_places</h2>
+                                    <p><img src='Media/arrivee.png' width='30px'/>$data->ville_arrivee</p>
+                                    </div>";
+						
+						          echo "<div id='options'class='span3'>
+							<div class='span6'>";
+                                switch($data->taille_bagage){
+                                    case 1:
+                                        echo "<img src='Media/s_baggage.png' class='options' alt='Petit baggages' />";
+                                    break;
+                                    
+                                    case 2:
+                                        echo "<img src='Media/m_baggage.png' class='options' alt='Moyens baggages' />";
+                                    break;
+                                    
+                                    case 3:
+                                        echo "<img src='Media/l_baggage.png' class='options' alt='Grands baggages' />";
+                                    break;
+                                }
+							echo "</div>
+						</div>
+					</div></article>";
+                    
+                            }
+                        break;
+
+                        case 2:
+                         echo "<h2>Les derniers covoiturages</h2>";
+                            
+                            $date = $_POST['date'];
+                            $depart = $_POST['depart'];
+                            $arrivee = $_POST['arrivee'];
+                            
+                            $query = "select * from Trajets where date_depart > $date and ville_depart = '$depart' and ville_arrivee = '$arrivee';";
+
+                            $arrayTrajets = mysqli_query($conn, $query);
+                            $numRow = mysqli_num_rows($arrayTrajets);
+                        
+                            for($i = 0; $i < $numRow; $i++){
+                                $data=mysqli_fetch_object($arrayTrajets);
+                                
+                                $query = "select * from Utilisateurs where id_utilisteurs = (select id_conducteur from Proposer where id_trajet = $data->id_trajets);";
+
+                                $arrayUtilisateur = mysqli_query($conn, $query);
+                                $utilisateur=mysqli_fetch_object($arrayUtilisateur);
+
+                                echo"<article class='contenu'>";
+                                echo" <div class='row-fluid'>
+                                        <div class='span3'>
+							             <p class='pseudo'>$utilisateur->prenom  $utilisateur->nom</p>
+							             <img src='Media/";
+                                if($utilisateur->photo == NULL){
+                                    echo "utilisateur.png";
+                                }
+                                else{
+                                    echo $utilisateur->photo;
+                                }
+                                
+                                echo "' class='img_user' />
+						                  </div>";
+						        
+                                echo "<div class='span3'>
+                                <p class='titre'>$data->date_depart</p>
                                 <h2 class='info'>$data->heure_depart</h2>
                                 <p><img src='Media/depart.png' width='30px'/>$data->ville_depart</p>
                                 <p>$data->modele_voiture</p>
@@ -298,8 +367,6 @@ include "bdd.php";
                     
                             }
                         break;
-
-                        case 2:
                         case 3:
                             echo "<h2>Recherche covoiturage</h2>";
                         break;
