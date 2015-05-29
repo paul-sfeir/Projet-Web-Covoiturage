@@ -283,11 +283,11 @@ include "bdd.php";
                 $idTrajet = mysqli_insert_id($conn);
                 $idUtilisateur = $_SESSION['id_utilisateurs'];
                
-                $query = "INSERT INTO Proposer (`id_conducteur`, `id_trajets`) VALUES($idUtilisateur, $idTrajet);";
+                $query = "INSERT INTO Proposer (`id_conducteur`, `id_trajet`) VALUES($idUtilisateur, $idTrajet);";
                 
                 $result = mysqli_query($conn, $query);
                 //Envoie l'utilisateur sur le détail de son trajet
-                echo"test";
+               
                 die("<script>location.href = 'trajet.php?id=$idTrajet'</script>");
             }
         }
