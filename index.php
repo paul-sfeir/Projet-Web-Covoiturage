@@ -141,7 +141,13 @@ include "bdd.php";
 					</li>
 					
 					<li class="span3">
-						<a href="#connexion" id="nav_compte">
+						<?php 
+						if(isset($_SESSION['login'])) {
+							echo "<a href='compte.php?id=".$_SESSION['id_utilisateurs']."' id='nav_compte'>";
+						} else {
+							echo "<a href='inscription.php' id='nav_compte'>";
+						}
+						?>
 							<img src="Media/compte.png" class="nav_icon" />
 							<p>Mon compte</p>
 						</a>
