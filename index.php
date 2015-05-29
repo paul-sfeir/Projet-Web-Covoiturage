@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 if(!isset($_SESSION['login'])){
     $_SESSION['login'] = 'anonyme';
@@ -51,7 +51,7 @@ include "bdd.php";
 		<div id="accrecherche">
 			<h2>Trouvez votre covoiturage en quelques clics</h2>
 			
-			<form>
+			<form method="post" action="resultats.php?id=2">
 				<div class="row">
 					<div class="span3">
 						<label>Départ</label>
@@ -120,7 +120,7 @@ include "bdd.php";
 			<div class="row-fluid">
 				<ul class="inline">
 					<li class="span3">
-						<a href="resultats.php?id=1" id="nav_derniers">
+						<a href="#" id="nav_derniers">
 							<img src="Media/horloge.png" class="nav_icon" />
 							<p>Les derniers covoiturages</p>
 						</a>
@@ -141,13 +141,7 @@ include "bdd.php";
 					</li>
 					
 					<li class="span3">
-						<?php 
-						if(isset($_SESSION['login'])) {
-							echo "<a href='compte.php?id=".$_SESSION['id_utilisateurs']."' id='nav_compte'>";
-						} else {
-							echo "<a href='inscription.php' id='nav_compte'>";
-						}
-						?>
+						<a href="#connexion" id="nav_compte">
 							<img src="Media/compte.png" class="nav_icon" />
 							<p>Mon compte</p>
 						</a>
