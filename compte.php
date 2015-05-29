@@ -259,24 +259,46 @@ include "bdd.php";
 					<article>
 						<hr/>
 						
-						<div>
-							<p class="petittitre">Pseudo</p>
-						</div>
-						
-						<div class="comment">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <?php
+                            $id = $_GET['id'];
+                            $query = "select * from Commentaire_utilisateur where id_utilisateur = $id;";
+
+$arrayCommentaire = mysqli_query($conn, $query);
+                            $numberRow = mysqli_num_rows($arrayCommentaire);
+
+                            for($i = 0; $i < $numberRow; $i++){
+                                $data = mysqli_fetch_object($arrayCommentaire);
+                                $query2 = "select * from Utilisateurs where id_utilisteurs = $data->id_utilisateur;";
+
+                                $arrayUtilisateur =  mysqli_query($conn, $query2);
+                                $utilisateur = mysqli_fetch_object($arrayUtilisateur);
+                                
+                                echo "<div>
+							<p class='petittitre'>$utilisateur->nom</p>
+						</div>";
+                                
+                                echo "<div class='comment'>
+							<p>$data->commentaire_utilisateur</p>";
 							
-							<!--Seulement pour l'admin-->
-							<p><a href="#">Supprimer</a></p>
-							<!--Fin de l'admin-->
-						</div>
+                                if($_SESSION['type_compte'] == 0){
+                                    echo " <!--Seulement pour l'admin-->
+                                <p><a href='#'>Supprimer</a></p>
+                                <!--Fin de l'admin-->";
+                                }
+                                
+						      echo "</div><hr/>";
+                            }
+                        ?>
 						
-						<hr/>
 					</article>
 					
 					<h2>Ajouter un commentaire</h2>
 					
-					<form>
+                    <?php
+                        $id = $_GET['id'];
+                        echo "<form method='post' action='compte.php?id=$id'>";
+                    ?>
+					
 						<textarea name="commentaire" placeholder="Ville, code postal..."></textarea>
 						<input type="submit" value="Poster" class="button_search" />
 					</form>
@@ -325,3 +347,14 @@ include "bdd.php";
 </body>
 
 </html>
+
+<?php
+    if(isset($_POST['commentaire']) && $_POST['commentaire'] != ""){
+        $commentaire = $_POST['commentaire'];
+        $id = $_GET['id'];
+        $query = "INSERT INTO Commentaire_utilisateur (`id_utilisateur`, `commentaire_utilisateur`) VALUES ($id, '$commentaire');";
+        echo $query;
+        $result = mysqli_query($conn, $query);
+    }
+
+?>
