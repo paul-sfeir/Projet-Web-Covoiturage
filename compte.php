@@ -128,7 +128,7 @@ include "bdd.php";
 					}
 				
 			echo "</ul>"; 
-			
+
 			if($_SESSION['type_compte']==0) {
 				echo "<h2>Ajouter un partenaire</h2>
 				
@@ -209,8 +209,6 @@ include "bdd.php";
 							</div>
 						</div>";
 					?>
-					
-					
 				
 				<div id="historique">
 					<h2>Mon historique de covoiturages</h2>
