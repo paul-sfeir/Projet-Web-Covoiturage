@@ -142,10 +142,12 @@ include "bdd.php";
 					
 					<li class="span3">
 						<?php 
-						if(isset($_SESSION['login'])) {
-							echo "<a href='compte.php?id=".$_SESSION['id_utilisateurs']."' id='nav_compte'>";
-						} else {
+						if($_SESSION['login'] == 'anonyme'){
 							echo "<a href='inscription.php' id='nav_compte'>";
+						} else {
+							if(isset($_SESSION['login'])) {
+								echo "<a href='compte.php?id=".$_SESSION['id_utilisateurs']."' id='nav_compte'>";
+							}
 						}
 						?>
 							<img src="Media/compte.png" class="nav_icon" />
