@@ -93,30 +93,51 @@ include "bdd.php";
 				
 				<p>Envie de lier l’utile à l’agréable ? A chaque déplacement, que vous soyez passager ou conducteur, votre total de Go points augmente. Afin de récompenser nos membres les plus fidèles, nous vous proposons d’échanger vos Go points contre des cadeaux exclusifs fournis par nos partenaires. Rendre service n’a jamais été aussi plaisant !</p>
 				
-				<p><a href="cadeau.php">Voir les cadeaux à gagner</a></p>
-				
 				<h2>Des partenaires</h2>
+				<?php
+				$req2="SELECT * FROM Partenaires";
+				$result2=mysqli_query($conn,$req2);
 				
-				<ul>
-					<li><a href="javascript:visibilite('partenaire1')">Partenaire 1</a></li>
-						<!--Seul l'admin peut modifier les infos partenaires-->
-						<div id="partenaire1" style="display:none">
-							<p>Prénom Nom - <a href="#">Modifier</a></p>
-							<p>Adresse email - <a href="#">Modifier</a></p>
-						</div>
+				$nb_part=mysqli_num_rows($result2);
+				$i=0;
+				
+				echo "<ul>";
+					
+					while($i<$nb_part) {
 						
-					<li><a href="javascript:visibilite('partenaire2')">Partenaire 2</a></li>
-						<div id="partenaire2" style="display:none">
-							<p>Prénom Nom - <a href="#">Modifier</a></p>
-							<p>Adresse email - <a href="#">Modifier</a></p>
-						</div>
+						$data2=mysqli_fetch_object($result2);
 						
-					<li><a href="javascript:visibilite('partenaire3')">Partenaire 3</a></li>
-						<div id="partenaire2" style="display:none">
-							<p>Prénom Nom - <a href="#">Modifier</a></p>
-							<p>Adresse email - <a href="#">Modifier</a></p>
-						</div>
-				</ul>
+						echo "
+							<li><a href='javascript:visibilite(`partenaire".$data2->id_partenaires."`)'>".$data2->nom_partenaire."</a></li>
+								<div id='partenaire".$data2->id_partenaires."' style='display:none'>
+									<p>Contact : ".$data2->nom_contact."</p>
+									<p>".$data2->adresse_mail."</p>";
+						if($_SESSION['type_compte']==0) {
+									echo "<p><a href='ajouterpart.php?id=".$data2->id_partenaires."'>Modifier</a> - <a href='#'>Supprimer</a></p>";
+						}
+								echo "</div>";
+						$i++;
+					}
+				
+			echo "</ul>";
+			
+				if($_SESSION['type_compte']==0) {
+				echo "<h2>Ajouter un partenaire</h2>
+				
+				<form action='cadeaux.php' method='post' id='form_partenaire'>
+					<label>Nom<label>
+					<input type='text' name='nom_ajout_part' />
+					
+					<label>Nom du contact<label>
+					<input type='text' name='contact_ajout_part' />
+					
+					<label>Adresse électronique<label>
+					<input type='text' name='email_ajout_part' />
+					
+					<input type='submit' value='Valider' class='button_search' />
+				</form>";
+				}
+				?>
 				
 			</div>
 			
@@ -154,44 +175,47 @@ include "bdd.php";
                     echo " <p><input type='submit' value='Commander' class='button_search' /></p>";
 					echo " <p style='margin-right: -20px;'><a href='cadeaux.php?id=$data->id_cadeaux'>Supprimer</a> - <a href='#'>Modifier</a></p> </div></div><hr/>";
                 }
-                ?>
-                </article>
+                
+                echo "</article>";
 				
-				<div id="ajout_cadeaux" class="contenu">
+				if($_SESSION['type_compte']==0) {
+				echo "<div id='ajout_cadeaux' class='contenu'>
 					<h2>Ajouter un cadeau</h2>
 					
-					<form action="cadeaux.php" method="post" enctype="multipart/form-data">
-						<div class="row-fluid">
-							<div class="span5">
+					<form action='cadeaux.php' method='post' enctype='multipart/form-data'>
+						<div class='row-fluid'>
+							<div class='span5'>
 								<label>Intitulé</label>
-								<input type="text" name="nom_cadeau"/>
+								<input type='text' name='nom_cadeau'/>
 							</div>
 							
-							<div class="span5">
+							<div class='span5'>
 								<label>Partenaire</label>
-								<select name="partenaire">
+								<select name='partenaire'>
 									<option>Nom partenaire</option>
 									<option>Nom partenaire</option>
 									<option>Nom partenaire</option>
 								</select>
 							</div>
 							
-							<div class="span2">
+							<div class='span2'>
 								<label>Prix</label>
-								<input type="text" name="score"/>
+								<input type='text' name='score'/>
 							</div>
 							
-							<div class="span5">
+							<div class='span5'>
 								<label>Image</label>
-								<input type="file" name="image"/>
+								<input type='file' name='image'/>
 							</div>
 							
-							<div class="span2">
-								<input type="submit" value="Valider" class="button_search" />
+							<div class='span2'>
+								<input type='submit' value='Valider' class='button_search' />
 							</div>
 						</div>
 					</form>
-				</div>
+				</div>";
+				}
+				?>
 				
 			</div>
 			
