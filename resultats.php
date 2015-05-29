@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 if(!isset($_SESSION['login'])){
     $_SESSION['login'] = 'anonyme';
@@ -9,7 +9,20 @@ include "bdd.php";
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Les derniers covoiturages - GoCars</title>
+    <?php
+        $cas = $_GET['id'];
+        switch($cas){
+            case 1:
+                echo "<title>Les derniers covoiturages - GoCars</title>";
+            break;
+
+            case 2:
+            case 3:
+                echo "<title>Recherche covoiturage - GoCars</title>";
+            break;
+        }
+    ?>
+	
 	<meta charset="UTF-8">
 	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -105,27 +118,47 @@ include "bdd.php";
 						<div class="span6">
 							<label>A partir de</label>
 							<select>
-								<option>4h</option>
-								<option>5h</option>
-								<option>6h</option>
-								<option>7h</option>
-								<option>8h</option>
-								<option>9h</option>
-								<option>10h</option>
-								<option>11h</option>
-								<option>12h</option>
-								<option>13h</option>
-								<option>14h</option>
-								<option>15h</option>
-								<option>16h</option>
-								<option>17h</option>
-								<option>18h</option>
-								<option>19h</option>
-								<option>20h</option>
-								<option>21h</option>
-								<option>22h</option>
-								<option>23h</option>
-								<option>00h</option>
+								<option value = "4">4h</option>
+								<option value = "4">4h30</option>
+								<option value = "5">5h</option>
+								<option value = "5">5h30</option>
+								<option value = "6">6h</option>
+								<option value = "6">6h30</option>
+								<option value = "7">7h</option>
+								<option value = "7">7h30</option>
+								<option value = "8">8h</option>
+								<option value = "8">8h30</option>
+								<option value = "9">9h</option>
+								<option value = "9">9h30</option>
+								<option value = "10">10h</option>
+								<option value = "10">10h30</option>
+								<option value = "11">11h</option>
+								<option value = "11">11h30</option>
+								<option value = "12">12h</option>
+								<option value = "13">12h30</option>
+								<option value = "13">13h</option>
+								<option value = "14">13h30</option>
+								<option value = "14">14h</option>
+								<option value = "15">14h30</option>
+								<option value = "15">15h</option>
+								<option value = "15">15h30</option>
+								<option value = "16">16h</option>
+								<option value = "16">16h30</option>
+								<option value = "17">17h</option>
+								<option value = "17">17h30</option>
+								<option value = "18">18h</option>
+								<option value = "18">18h30</option>
+								<option value = "19">19h</option>
+								<option value = "19">19h30</option>
+								<option value = "20">20h</option>
+								<option value = "20">20h30</option>
+								<option value = "21">21h</option>
+								<option value = "21">21h30</option>
+								<option value = "22">22h</option>
+								<option value = "22">22h30</option>
+								<option value = "23">23h</option>
+								<option value = "23">23h30</option>
+								<option value = "0">00h</option>
 							</select>
 						</div>
 					</div>
@@ -134,24 +167,16 @@ include "bdd.php";
 					
 					<label>Nombre de places disponibles</label>
 					<select>
-						<option> </option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-					</select>
-					
-					<label>Type de trajet</label>
-					<select>
-						<option> </option>
-						<option>Aller simple</option>
-						<option>Aller-retour</option>
-						<option>Trajet régulier</option>
+						<option value = "0"> </option>
+                        <option value = "1">1</option>
+                        <option value = "2">2</option>
+                        <option value = "3">3</option>
+                        <option value = "4">4</option>
+                        <option value = "5">5</option>
+                        <option value = "6">6</option>
+                        <option value = "7">7</option>
+                        <option value = "8">8</option>
+                        <option value = "9">9</option>
 					</select>
 					
 					<hr/>
@@ -203,45 +228,80 @@ include "bdd.php";
 			
 			
 			<div id="resultat" class="span8">
-			
-				<h2>Les derniers covoiturages</h2>
+			     <?php
+                    $cas = $_GET['id'];
+                    echo"<article class='contenu'>";
+                    switch($cas){
+                        case 1:
+                            echo "<h2>Les derniers covoiturages</h2>";
+                            
+                            $query = "Select * from Trajets order by dates_publication;";
+                            $arrayTrajets = mysqli_query($conn, $query);
+                            $numRow = mysqli_num_rows($arrayTrajets);
+                        
+                            for($i = 0; $i < $numRow; $i++){
+                                $data=mysqli_fetch_object($arrayTrajets);
+                                
+                                $query = "select * from Utilisateurs where id_utilisteurs = (select id_conducteur from Proposer where id_trajet = $data->id_trajets);";
+                                
+                                $arrayUtilisateur = mysqli_query($conn, $query);
+                                echo $arrayUtilisateur->prenom;
+                                echo" <div class='row-fluid'>
+                                        <div class='span3'>
+							             <p class='pseudo'>$arrayUtilisateur->prenom  $arrayUtilisateur->nom</p>
+							             <img src='Media/";
+                                if($arrayUtilisateur->photo == NULL){
+                                    echo "utilisateur.png";
+                                }
+                                else{
+                                    echo $arrayUtilisateur->photo;
+                                }
+                                
+                                echo "' class='img_user' />
+						                  </div>";
+						
+						        echo "<div class='span3'>
+                                <p class='titre'>$data->date_depart</p>
+                                <h2 class='info'>$data->heure_depart</h2>
+                                <p><img src='Media/depart.png' width='30px'/>$data->ville_depart</p>
+                                <p>$data->modele_voiture</p>
+						          </div>";
+						
+						          echo "<div class='span3'>
+                                    <p> </p>
+                                    <h2 class='info'>$data->nombres_places places</h2>
+                                    <p><img src='Media/arrivee.png' width='30px'/>$data->ville_arrivee</p>
+                                    </div>";
+						
+						          echo "<div id='options'class='span3'>
+							<div class='span6'>";
+                                switch($data->taille_bagage){
+                                    case 1:
+                                        echo "<img src='Media/s_baggage.png' class='options' alt='Petit baggages' />";
+                                    break;
+                                    
+                                    case 2:
+                                        echo "<img src='Media/m_baggage.png' class='options' alt='Moyens baggages' />";
+                                    break;
+                                    
+                                    case 3:
+                                        echo "<img src='Media/l_baggage.png' class='options' alt='Grands baggages' />";
+                                    break;
+                                }
+							echo "</div>
+						</div>
+					</div>";
+                    
+                            }
+                        break;
+
+                        case 2:
+                        case 3:
+                            echo "<h2>Recherche covoiturage</h2>";
+                        break;
+                    }
+                ?>
 				
-				<article class="contenu">
-					<div class="row-fluid">
-						<div class="span3">
-							<p class="pseudo">Pseudo</p>
-							<img src="Media/utilisateur.png" class="img_user" />
-						</div>
-						
-						<div class="span3">
-							<p class="titre">JJ/MM/AAAA</p>
-							<h2 class="info">10H00</h2>
-							<p><img src="Media/depart.png" width="30px"/>Départ</p>
-							<p>Informations voiture</p>
-						</div>
-						
-						<div class="span3">
-							<p class="titre">JJ/MM/AAAA</p>
-							<h2 class="info">2 places</h2>
-							<p><img src="Media/arrivee.png" width="30px"/>Arrivée</p>
-							<p>Informations voiture</p>
-						</div>
-						
-						<div id="options"class="span3">
-							<div class="span6">
-								<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-							</div>
-							<div class="span6">
-								<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-							</div>
-							<div class="span6">
-								<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-							</div>
-							<div class="span6">
-								<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-							</div>
-						</div>
-					</div>
 				</article>
 			
 			</div>
