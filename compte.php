@@ -209,6 +209,8 @@ include "bdd.php";
 							</div>
 						</div>";
 					?>
+					
+					
 				
 				<div id="historique">
 					<h2>Mon historique de covoiturages</h2>
