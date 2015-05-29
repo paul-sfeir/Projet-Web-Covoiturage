@@ -261,6 +261,8 @@ include "bdd.php";
         $nombrePlaces = $_POST['nombre_places'];
         $modeleVoiture = $_POST['voiture'];
         
+        echo $heure;
+        
         $fumeur = (isset($_POST['fumeur'])) ? 1 : 0;
         $animaux = (isset($_POST['animaux'])) ? 1 : 0;
         $homme = (isset($_POST['hommes'])) ? 1 : 0;
@@ -268,12 +270,12 @@ include "bdd.php";
         $handicap = (isset($_POST['handicap'])) ? 1 : 0;
         $bagage = (isset($_POST['bagage'])) ? $_POST['bagage'] : 0;
         
-        $date1 = date("Y/m/d");
+        $date1 = date("d/m/Y");
         
         if(mktime($date1) > mktime($date)){
         
             //Crée le nouveau trajet
-            $query = "INSERT INTO Trajets (`nombres_places`, `modele_voiture`, `date_depart`, `ville_depart`, `ville_arrivee`, `fumeur_auth`, `animal_auth`, `handicape_auth`, `femmes_uniquement`, `hommes_uniquement`, `taille_bagage`, `dates_publication`) VALUES ($nombrePlaces, '$modeleVoiture', $date, '$depart', '$arrivee', $fumeur, $animaux, $handicap, $femme, $homme, $bagage, $date1);";
+            $query = "INSERT INTO Trajets (`nombres_places`, `modele_voiture`, `date_depart`, `heure_depart`, `ville_depart`, `ville_arrivee`, `fumeur_auth`, `animal_auth`, `handicape_auth`, `femmes_uniquement`, `hommes_uniquement`, `taille_bagage`, `dates_publication`) VALUES ($nombrePlaces, '$modeleVoiture', $date, $heure, '$depart', '$arrivee', $fumeur, $animaux, $handicap, $femme, $homme, $bagage, $date1);";
 
             $result = mysqli_query($conn, $query);
 
