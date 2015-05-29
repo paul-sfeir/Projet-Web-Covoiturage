@@ -93,57 +93,122 @@ include "bdd.php";
 				
 				<p>Envie de lier l’utile à l’agréable ? A chaque déplacement, que vous soyez passager ou conducteur, votre total de Go points augmente. Afin de récompenser nos membres les plus fidèles, nous vous proposons d’échanger vos Go points contre des cadeaux exclusifs fournis par nos partenaires. Rendre service n’a jamais été aussi plaisant !</p>
 				
-				<p><a href="cadeau.php">Voir les cadeaux à gagner</a></p>
+				<p><a href="cadeaux.php">Voir les cadeaux à gagner</a></p>
 				
 				<h2>Des partenaires</h2>
 				
-				<ul>
-					<li><a href="javascript:visibilite('partenaire1')">Partenaire 1</a></li>
-						<!--Seul l'admin peut modifier les infos partenaires-->
-						<div id="partenaire1" style="display:none">
-							<p>Prénom Nom - <a href="#">Modifier</a></p>
-							<p>Adresse email - <a href="#">Modifier</a></p>
-						</div>
+				<?php
+					$id=$_GET['id'];
+					
+					$req="SELECT * FROM Utilisateurs WHERE id_utilisteurs=$id";
+					$result=mysqli_query($conn,$req);
+					
+					$req2="SELECT * FROM Partenaires";
+					$result2=mysqli_query($conn,$req2);
+					
+					$data=mysqli_fetch_object($result);
+					
+					$nb_part=mysqli_num_rows($result2);
+					$i=0;
+
+					echo "<ul>";
+					
+					while($i<$nb_part) {
 						
-					<li><a href="javascript:visibilite('partenaire2')">Partenaire 2</a></li>
-						<div id="partenaire2" style="display:none">
-							<p>Prénom Nom - <a href="#">Modifier</a></p>
-							<p>Adresse email - <a href="#">Modifier</a></p>
-						</div>
+						$data2=mysqli_fetch_object($result2);
 						
-					<li><a href="javascript:visibilite('partenaire3')">Partenaire 3</a></li>
-						<div id="partenaire2" style="display:none">
-							<p>Prénom Nom - <a href="#">Modifier</a></p>
-							<p>Adresse email - <a href="#">Modifier</a></p>
-						</div>
-				</ul>
+						echo "
+							<li><a href='javascript:visibilite(`partenaire".$data2->id_partenaires."`)'>".$data2->nom_partenaire."</a></li>
+								<div id='partenaire".$data2->id_partenaires."' style='display:none'>
+									<p>Contact : ".$data2->nom_contact."</p>
+									<p>".$data2->adresse_mail."</p>
+									<p><a href='ajouterpart.php?id=".$data2->id_partenaires."'>Modifier</a> - <a href='#'>Supprimer</a></p>
+								</div>";
+						$i++;
+					}
 				
-			</div>
+			echo "</ul>"; 
+			
+			if($_SESSION['type_compte']==0) {
+				echo "<h2>Ajouter un partenaire</h2>
+				
+				<form action='compte.php?id=".$id."' method='post' id='form_partenaire'>
+					<label>Nom<label>
+					<input type='text' name='nom_ajout_part' />
+					
+					<label>Nom du contact<label>
+					<input type='text' name='contact_ajout_part' />
+					
+					<label>Adresse électronique<label>
+					<input type='text' name='email_ajout_part' />
+					
+					<input type='submit' value='Valider' class='button_search' />
+				</form>";
+			}
+			
+				
+			
+			echo "</div>
 			
 			
-			<div id="user_account" class="contenu span8">
+			<div id='user_account' class='contenu span8'>
 			
-				<div id="mesinfos">
-					<h2>Mes informations <a href="#" class="modif">Supprimer</a><a href="#" class="modif">Modifier</a></h2>
+				<div id='mesinfos'>";
+			
+						
+						if($_SESSION['id_utilisateurs']==$id) {
+							echo "<h2>Mes informations <a href='inscription.php?id=".$id."' class='modif'>Modifier</a></h2>";
+						} else {
+							if($_SESSION['type_compte']==0) {
+								echo "<h2>Mes informations <a href='#' class='modif'>Supprimer</a><a href='inscription.php?id=".$id."' class='modif'>Modifier</a></h2>";
+							} else {
+								echo "<h2>Mes informations</h2>";
+							}
+						}
+						echo "<div id='img_profile' class='span3'>";
+						
+							
+						if($data->photo==NULL) {
+							echo "<img src='Media/utilisateur.png' class='img_user' />";
+						} else {
+							echo "<img src='Media/".$data->photo."' class='img_user' />";
+						}
+						
+						$javascript="javascript:visibilite(`change_img`)";
+						
+						if($_SESSION['id_utilisateurs']==$id || $_SESSION['type_compte']==0) {
+							echo "<p><a href='$javascript'>Modifier votre image</a></p>
+									<div id='change_img' style='display:none'>
+										<p>
+											<form action='compte.php?id=".$id."' method='post' enctype='multipart/form-data'>
+												<input type='file' name='image'/>
+												<input type='submit' value='Envoyer' class='button_search' />
+											</form>
+										</p>
+									</div>";
+						}
+						
+						echo "</div>
 					
-					<div id="img_profile" class="span3">
-						<img src="Media/utilisateur.png" class="img_user" />
-						<p><a href="#">Modifier votre image</a></p>
-					</div>
+							<div class='span5'>
+								<p class='petittitre'>";
+						
+							echo $data->prenom;
+							echo " ";
+							echo $data->nom;
+							echo "</p>
+								<p>".$data->email."</p>
+								<p>Mot de passe : ***********</p>
+								<p>Description :".$data->description."</p>
+								<p>Téléphone : ".$data->telephone."</p>
+							</div>
 					
-					<div class="span5">
-						<p class="petittitre">Prénom Nom</p>
-						<p>Adresse email</p>
-						<p>Mot de passe : ***********</p>
-						<p>Adresse : XX voie nomvoie, XXXXX VILLE</p>
-						<p>Téléphone : 01 23 45 67 89</p>
-					</div>
-					
-					<div id="score" class="span3">
-						<p class="petittitre">Score</p>
-						<p class="petittitre">XXpts</p>
-					</div>
-				</div>
+							<div id='score' class='span3'>
+								<p class='petittitre'>Score</p>
+								<p class='petittitre'>".$data->score."Go</p>
+							</div>
+						</div>";
+					?>
 				
 				<div id="historique">
 					<h2>Mon historique de covoiturages</h2>
@@ -249,63 +314,3 @@ include "bdd.php";
 </body>
 
 </html>
-
-<?php
-/*
-                                echo '<script>
-                                function checkPasswordMatch() {
-                                    var password = $("#passord2").val();
-                                    var confirmPassword = $("#confirmation").val();
-
-                                    if (password != confirmPassword)
-                                        document.getElementById("pass").style.color = "blue";
-                                }
-                                $(document).ready(function () {
-                                    $("#txtConfirmPassword").keyup(checkPasswordMatch);
-                                });
-                                </script>';*/
-
-//Partie connexion
-    if(isset($_POST['login']) && isset($_POST['password'])){
-        $login = $_POST['login'];
-        $pass = $_POST['password'];
-        
-        $query = "SELECT email, photo, prenom, nom FROM Utilisateurs WHERE email = '".$login."' AND password = '".$pass."';";
-
-        $result = mysqli_query($conn, $query);
-        
-        $tabInfoUtilisateur = mysqli_fetch_assoc($result);
-         
-        if($tabInfoUtilisateur != NULL){
-            $_SESSION['login'] = $tabInfoUtilisateur['email'];
-            $_SESSION['photo'] = $tabInfoUtilisateur['photo'];
-            $_SESSION['prenom'] = $tabInfoUtilisateur['prenom'];
-            $_SESSION['nom'] = $tabInfoUtilisateur['nom'];
-            header("Location: index.php");
-        }
-    }
-    
-//Partie inscription
-    if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password2']) && isset($_POST['confirmation'])){
-        $civilite = $_POST['civilite'];
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $mail = $_POST['email'];
-        $password2 = $_POST['password2'];
-        $confirmation = $_POST['confirmation'];
-        
-        //test si les passwords sont identiques
-        if($password2 == $confirmation){
-            $verifAdresseMail = "SELECT COUNT(*) FROM Utilisateurs WHERE email = '".$mail."';";
-            $result = mysqli_query($conn, $query);
-            if(result == 0){
-            
-                $query = "INSERT INTO Utilisateurs (`email`, `password`, `prenom`, `nom`, `civilite`, `type_compte`, `score`) VALUES ('".$mail."', '".$password2."', '".$prenom."', '".$nom."', '".$civilites."', 1, 0);";
-
-                $result = mysqli_query($conn, $query);
-
-                header("Location: connexion.php");
-            }
-        }
-    }
-?>
