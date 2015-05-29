@@ -137,6 +137,17 @@ include "bdd.php";
 					<input type='submit' value='Valider' class='button_search' />
 				</form>";
 				}
+				echo "bsdf";
+				if(isset($_POST['nom_ajout_part']) && $_POST['nom_ajout_part'] != "" && isset($_POST['contact_ajout_part']) && $_POST['contact_ajout_part'] != "" && isset($_POST['email_ajout_part']) && $_POST['email_ajout_part'] != ""){
+					
+					$nom_partenaire = $_POST['nom_ajout_part'];
+					$contact_partenaire = $_POST['contact_ajout_part'];
+					$email = $_POST['email_ajout_part'];
+					
+					$req_partenaire="INSERT INTO Partenaires (`nom_partenaire`, `nom_contact`, `adresse_mail`) VALUES ($nom_partenaire, $contact_partenaire, $email);";
+					echo $req_partenaire;
+					$res_partenaire = mysqli_query($conn, $req_partenaire);
+				}
 				?>
 				
 			</div>
@@ -191,11 +202,19 @@ include "bdd.php";
 							
 							<div class='span5'>
 								<label>Partenaire</label>
-								<select name='partenaire'>
-									<option>Nom partenaire</option>
-									<option>Nom partenaire</option>
-									<option>Nom partenaire</option>
-								</select>
+								<select name='partenaire'>";
+								
+								$req_part="SELECT * FROM Partenaires";
+								$res_part= mysqli_query($conn, $req_part);
+								$nb_partenaires = mysqli_num_rows($res_part);
+								
+								for($i=0; $i < $nb_art; $i++){
+									$list_part=mysqli_fetch_object($res_part);
+									
+									echo "<option value='$list_part->id_partenaires'>$list_part->nom_partenaire</option>";
+								}
+								
+								echo "</select>
 							</div>
 							
 							<div class='span2'>
@@ -214,6 +233,26 @@ include "bdd.php";
 						</div>
 					</form>
 				</div>";
+				}
+				
+				
+				if(isset($_POST['nom_cadeau']) && $_POST['nom_cadeau'] != "" && isset($_POST['partenaire']) && $_POST['partenaire'] != "" && isset($_POST['score']) && $_POST['score'] != ""){
+					$nom_cadeau = $_POST['nom_cadeau'];
+					$id_partenaire = $_POST['partenaire'];
+					$score = $_POST['score'];
+					
+					$info = pathinfo($_FILES['image']['name']);
+					$extension_img = $info['extension'];
+					$extensions = array('jpg', 'jpeg', 'gif', 'png');
+					if (in_array($extension_img, $extensions))
+					{
+							move_uploaded_file($_FILES['image']['tmp_name'], 'Media/' . basename($_FILES['image']['name']));
+							$img_nom=$_FILES['image']['name'];
+							
+							$query_cadeaux = "INSERT INTO Cadeaux (`id_partenaire`, `nom_cadeau`, `nom_image_cadeau`, `score_necessaire`) VALUES ($id_partenaire, $nom_cadeau, $img_nom, $score);";
+
+							$res_cadeaux = mysqli_query($conn, $query_cadeaux);
+					}
 				}
 				?>
 				
