@@ -153,15 +153,6 @@ include "bdd.php";
 							</select>
 						</div>
 						
-						<div class="span6">
-							<label>Type de trajet</label>
-							<select>
-								<option> </option>
-								<option>Aller simple</option>
-								<option>Aller-retour</option>
-								<option>Trajet régulier</option>
-							</select>
-						</div>
 					</div>
 					
 					<hr/>

@@ -149,7 +149,7 @@ article {
 
 /* Page proposer un covoiturage */
 
-#proposition form, #avis form, #ajout_cadeaux form {
+#proposition form, #avis form, #ajout_cadeaux form, #partenaires form {
 	margin: 20px;
 }
 
@@ -213,6 +213,16 @@ article {
 	padding-top: 50px;
 }
 
+#form_partenaire input{
+	width: 100%;
+}
+
+#form_partenaire .button_search {
+	width: 30%;
+	float: right;
+	margin-bottom: 20px;
+}
+
 
 
 /* Page trajet */
@@ -243,3 +253,4 @@ article {
 #ajout_cadeaux .button_search {
 	margin-bottom: 20px;
 }
+
