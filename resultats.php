@@ -230,7 +230,7 @@ include "bdd.php";
 			<div id="resultat" class="span8">
 			     <?php
                     $cas = $_GET['id'];
-                    echo"<article class='contenu'>";
+                    
                     switch($cas){
                         case 1:
                             echo "<h2>Les derniers covoiturages</h2>";
@@ -243,25 +243,29 @@ include "bdd.php";
                                 $data=mysqli_fetch_object($arrayTrajets);
                                 
                                 $query = "select * from Utilisateurs where id_utilisteurs = (select id_conducteur from Proposer where id_trajet = $data->id_trajets);";
-                                
+
                                 $arrayUtilisateur = mysqli_query($conn, $query);
-                                echo $arrayUtilisateur->prenom;
+                                $utilisateur=mysqli_fetch_object($arrayUtilisateur);
+
+                                echo"<article class='contenu'>";
                                 echo" <div class='row-fluid'>
                                         <div class='span3'>
-							             <p class='pseudo'>$arrayUtilisateur->prenom  $arrayUtilisateur->nom</p>
+							             <p class='pseudo'>$utilisateur->prenom  $utilisateur->nom</p>
 							             <img src='Media/";
-                                if($arrayUtilisateur->photo == NULL){
+                                if($utilisateur->photo == NULL){
                                     echo "utilisateur.png";
                                 }
                                 else{
-                                    echo $arrayUtilisateur->photo;
+                                    echo $utilisateur->photo;
                                 }
                                 
                                 echo "' class='img_user' />
 						                  </div>";
-						
-						        echo "<div class='span3'>
-                                <p class='titre'>$data->date_depart</p>
+						        $date = $data->date_depart;
+                                $dateDepart =  date("d/m", strtotime($date));
+						        
+                                echo "<div class='span3'>
+                                <p class='titre'>$dateDepart</p>
                                 <h2 class='info'>$data->heure_depart</h2>
                                 <p><img src='Media/depart.png' width='30px'/>$data->ville_depart</p>
                                 <p>$data->modele_voiture</p>
@@ -290,7 +294,7 @@ include "bdd.php";
                                 }
 							echo "</div>
 						</div>
-					</div>";
+					</div></article>";
                     
                             }
                         break;
@@ -301,8 +305,6 @@ include "bdd.php";
                         break;
                     }
                 ?>
-				
-				</article>
 			
 			</div>
 			
