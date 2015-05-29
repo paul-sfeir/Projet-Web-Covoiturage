@@ -9,7 +9,16 @@ include "bdd.php";
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Trajet de XX à XX - GoCars</title>
+	<?php
+		$id=$_GET['id'];
+		
+		$req="SELECT * FROM Trajets t, Proposer p, Utilisateurs u WHERE t.id_trajets=1 AND t.id_trajets=p.id_trajet AND p.id_conducteur=u.id_utilisteurs";
+		$result=mysqli_query($conn,$req);
+		
+		$data=mysqli_fetch_object($result);
+		
+	echo "<title>Trajet de $data->ville_depart à $data->ville_arrivee - GoCars</title>";
+	?>
 	<meta charset="UTF-8">
 	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +52,7 @@ include "bdd.php";
 				</li>
 				
 				<li>
-					<a href="resultats.php" id="nav_derniers2">
+					<a href="resultats.php?id=1" id="nav_derniers2">
 						<img src="Media/horloge.png" class="nav_icon" />
 						Les derniers covoiturages
 					</a>
@@ -203,122 +212,106 @@ include "bdd.php";
 			
 			
 			<div id="resultat" class="contenu span8">	
-			
-				<h2>Trajet de XX à XX <a href="#" class="modif">Supprimer</a><a href="#" class="modif">Modifier</a></h2>
 				
-				<div class="row-fluid">
+				<?php
+					
+					if($_SESSION['id_utilisateurs']==$data->id_conducteur || $_SESSION['type_compte']==0) {
+					
+				echo "<h2>Trajet de $data->ville_depart à $data->ville_arrivee <a href='#' class='modif'>Supprimer</a><a href='#' class='modif'>Modifier</a></h2>";
+				
+				echo "<div class='row-fluid'>
 
-					<div class="span3">
-						<p class="pseudo">Pseudo</p>
-						<img src="Media/utilisateur.png" class="img_user" />
+					<div class='span3'>
+						<p class='pseudo'>".$data->prenom." ".$data->nom."</p>
+						<img src='Media/utilisateur.png' class='img_user' />
 					</div>
 					
-					<div class="span3">
-						<p class="titre">JJ/MM/AAAA</p>
-						<h2 class="info">10H00</h2>
-						<p><img src="Media/depart.png" width="30px"/>Départ</p>
-						<p>Informations voiture</p>
+					<div class='span3'>
+						<p class='titre'>$data->date_depart</p>
+						<h2 class='info'>".$data->heure_depart."</h2>
+						<p><img src='Media/depart.png' width='30px'/>$data->ville_depart</p>
 					</div>
 					
-					<div class="span3">
-						<p class="titre">JJ/MM/AAAA</p>
-						<h2 class="info">2 places</h2>
-						<p><img src="Media/arrivee.png" width="30px"/>Arrivée</p>
-						<p>Informations voiture</p>
+					<div class='span3'>
+						<p class='titre'>$data->modele_voiture </p>
+						<h2 class='info'>$data->nombres_places</h2>
+						<p><img src='Media/arrivee.png' width='30px'/>Arrivée</p>
 					</div>
 					
-					<div id="options"class="span3">
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-					</div>
+					<div id='options' class='span3'>";
 					
-					<div class="span12">
+					echo "<div class='span6 icones_options'>";
+                                switch($data->taille_bagage){
+                                    case 1:
+                                        echo "<img src='Media/s_baggage.png' class='options' alt='Petit baggages' /><span>Petits baggages</span> ";
+                                    break;
+                                    
+                                    case 2:
+                                        echo "<img src='Media/m_baggage.png' class='options' alt='Moyens baggages' /><span>Moyens baggages</span> ";
+                                    break;
+                                    
+                                    case 3:
+                                        echo "<img src='Media/l_baggage.png' class='options' alt='Grands baggages' /><span>Grands baggages</span> ";
+                                    break;
+                                }
+							echo "</div>";
+							
+							if($data->fumeur_auth==1) {
+								echo "<div class='span6 icones_options'>
+											<img src='Media/nosmoking.png' class='options' />
+											<span>Non fumeur</span>
+										</div>";
+							}
+							
+							if($data->animal_auth==1) {
+								echo "<div class='span6 icones_options'>
+											<img src='Media/animaux.png' class='options' />
+											<span>Non fumeur</span>
+										</div>";
+							}
+							
+							if($data->hommes_uniquement==1) {
+								echo "<div class='span6 icones_options'>
+											<img src='Media/hommes.png' class='options' />
+											<span>Hommes seulement</span>
+										</div>";
+							}
+							
+							if($data->femmes_uniquement==1) {
+								echo "<div class='span6 icones_options'>
+											<img src='Media/femmes.png' class='options' />
+											<span>Femmes seulement</span>
+										</div>";
+							}
+							
+							if($data->handicape_auth==1) {
+								echo "<div class='span6 icones_options'>
+											<img src='Media/handicap.png' class='options' />
+											<span>Handicapés pris en charge</span>
+										</div>";
+							}
+							
+					echo "</div>
+					
+					<div class='span12'>
 						
 						<h2>Participants</h2>
 						
-						<div class="span8">
+						<div class='span8'>
 							<ul>
-								<li><a href="#compte.php?id=X">Prénom Nom participant</a> - <a href="#">Retirer</a></li>
-								<li><a href="#compte.php?id=X">Prénom Nom participant</a> - <a href="#">Retirer</a></li>
-								<li><a href="#compte.php?id=X">Prénom Nom participant</a> - <a href="#">Retirer</a></li>
+								<li><a href='#compte.php?id=X'>Prénom Nom participant</a> - <a href='#'>Retirer</a></li>
 							</ul>
 						</div>
 						
-						<div class="span3">
-							<input type="submit" value="Participer" class="button_search" />
+						<div class='span3'>
+							<input type='submit' value='Participer' class='button_search' />
 						</div>
 						
 					</div>
-				</div>
-
-				<!--Pour utilisateur non-admin ou pas auteur de la page
-				<h2>Trajet de XX à XX</h2>
+				</div>";
 				
-				<div class="row-fluid">
-					<div class="span3">
-						<p class="pseudo">Pseudo</p>
-						<img src="Media/utilisateur.png" class="img_user" />
-					</div>
-					
-					<div class="span3">
-						<p class="titre">JJ/MM/AAAA</p>
-						<h2 class="info">10H00</h2>
-						<p><img src="Media/depart.png" width="30px"/>Départ</p>
-						<p>Informations voiture</p>
-					</div>
-					
-					<div class="span3">
-						<p class="titre">JJ/MM/AAAA</p>
-						<h2 class="info">2 places</h2>
-						<p><img src="Media/arrivee.png" width="30px"/>Arrivée</p>
-						<p>Informations voiture</p>
-					</div>
-					
-					<div id="options"class="span3">
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-						<div class="span6">
-							<img src="Media/m_baggage.png" class="options" alt="Moyens baggages" />
-						</div>
-					</div>
-					
-					<div class="span12">
-						
-						<h2>Participants</h2>
-						
-						<div class="span8">
-							<ul>
-								<li><a href="#compte.php?id=X">Prénom Nom participant</a></li>
-								<li><a href="#compte.php?id=X">Prénom Nom participant</a></li>
-								<li><a href="#compte.php?id=X">Prénom Nom participant</a></li>
-							</ul>
-						</div>
-						
-						<div class="span3">
-							<input type="submit" value="Participer" class="button_search" />
-						</div>
-						
-					</div>
-				</div>
-				-->
-
+					}
+?>
 			
 			</div>
 			
