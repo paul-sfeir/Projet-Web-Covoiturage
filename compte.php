@@ -289,10 +289,21 @@ include "bdd.php";
 					<h2><a href="javascript:visibilite('userslist')">Accéder à la liste des utilisateurs</a></h2>
 					<div id="userslist" style="display:none">
 						<ul>
-							<li><a href="#">Utilisateur</a></li>
-							<li><a href="#">Utilisateur</a></li>
-							<li><a href="#">Utilisateur</a></li>
-							<li><a href="#">Utilisateur</a></li>
+							<?php
+								$req_users="SELECT * FROM Utilisateurs";
+								$res_users=mysqli_query($conn,$req_users);
+								
+								$nb_users=mysqli_num_rows($res_users);
+								$i=0;
+								
+								while($i<$nb_users) {
+									$data_users=mysqli_fetch_object($res_users);
+									
+									echo
+							"<li><a href='compte.php?id=".$data_users->id_utilisteurs."'>".$data_users->prenom." ".$data_users->nom."</a></li>";
+								$i++;
+								}
+							?>
 						</ul>
 					</div>
 					

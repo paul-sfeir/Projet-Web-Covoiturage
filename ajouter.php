@@ -273,9 +273,6 @@ include "bdd.php";
         $date1 = date("d/m/Y");
         
         if(mktime($date1) > mktime($date)){
-            
-            echo $date;
-            echo $date1;
         
             //Crée le nouveau trajet
             $query = "INSERT INTO Trajets (`nombres_places`, `modele_voiture`, `date_depart`, `heure_depart`, `ville_depart`, `ville_arrivee`, `fumeur_auth`, `animal_auth`, `handicape_auth`, `femmes_uniquement`, `hommes_uniquement`, `taille_bagage`, `dates_publication`) VALUES ($nombrePlaces, '$modeleVoiture', '$date', $heure, '$depart', '$arrivee', $fumeur, $animaux, $handicap, $femme, $homme, $bagage, '$date1');";

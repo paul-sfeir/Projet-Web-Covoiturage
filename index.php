@@ -120,7 +120,7 @@ include "bdd.php";
 			<div class="row-fluid">
 				<ul class="inline">
 					<li class="span3">
-						<a href="#" id="nav_derniers">
+						<a href="resultats.php?id=1" id="nav_derniers">
 							<img src="Media/horloge.png" class="nav_icon" />
 							<p>Les derniers covoiturages</p>
 						</a>
