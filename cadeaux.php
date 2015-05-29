@@ -125,26 +125,37 @@ include "bdd.php";
 			
 				<h2>Les cadeaux à gagner</h2>
 				
-				<article class="cadeaux contenu">
-				
-					<div class="row-fluid">
-						<div id="img_profile" class="span3">
-							<img src="Media/utilisateur.png" class="img_user" />
-						</div>
-						
-						<div class="span5">
-							<p class="petittitre">Nom du cadeau</p>
-						</div>
-						
-						<div id="score" class="span3">
-							<p class="petittitre">XXGo</p>
-							<p><input type="submit" value="Commander" class="button_search" /></p>
-							<p style="margin-right: -20px;"><a href="#">Supprimer</a> - <a href="#">Modifier</a></p>
-						</div>
-						
-					</div>
-					
-				</article>
+                <?php
+
+                //Supprimer un cadeau
+                $id = $_GET['id'];
+                $query = "delete from Cadeaux where id_cadeaux = $id";
+                $result = mysqli_query($conn, $query);
+
+                $query = "select * from Cadeaux;";
+                $arrayCadeaux = mysqli_query($conn, $query);
+                $nb_art = mysqli_num_rows($arrayCadeaux);
+                
+                echo "<article class='cadeaux contenu'>";
+
+                for($i=0; $i < $nb_art; $i++){
+                    $data=mysqli_fetch_object($arrayCadeaux);
+                    
+                    $query = "select nom_partenaire from Partenaires where id_partenaires = $data->id_partenaire;";
+                    $nomPartenaire = mysqli_query($conn, $query);
+                    $data2=mysqli_fetch_object($nomPartenaire);
+                    
+                    echo "<div class='row-fluid'>";
+                    
+                    echo "<div class='row-fluid'> <div id='img_profile' class='span3'>";
+                    echo "<img src='Media/$data->nom_image_cadeau' class='img_user' /> </div>";
+					echo "	<div class='span5'><p class='petittitre'>$data->nom_cadeau - $data2->nom_partenaire</p> </div>";
+                    echo " <div id='score' class='span3'><p class='petittitre'>$data->score_necessaire</p>";
+                    echo " <p><input type='submit' value='Commander' class='button_search' /></p>";
+					echo " <p style='margin-right: -20px;'><a href='cadeaux.php?id=$data->id_cadeaux'>Supprimer</a> - <a href='#'>Modifier</a></p> </div></div><hr/>";
+                }
+                ?>
+                </article>
 				
 				<div id="ajout_cadeaux" class="contenu">
 					<h2>Ajouter un cadeau</h2>
