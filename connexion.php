@@ -102,7 +102,7 @@ include "bdd.php";
         $login = $_POST['login'];
         $pass = $_POST['password'];
         
-        $query = "SELECT id_utilisteurs, email, photo, prenom, nom FROM Utilisateurs WHERE email = '$login' AND password = '$pass';";
+        $query = "SELECT * FROM Utilisateurs WHERE email = '$login' AND password = '$pass';";
 		
 
         $result = mysqli_query($conn, $query);
