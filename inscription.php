@@ -29,7 +29,7 @@ include "bdd.php";
 				</li>
 				
 				<li>
-					<a href="#resultats" id="nav_derniers2">
+					<a href="resultats.php?id=1" id="nav_derniers2">
 						<img src="Media/horloge.png" class="nav_icon" />
 						Les derniers covoiturages
 					</a>
@@ -188,7 +188,7 @@ include "bdd.php";
 
                 $result = mysqli_query($conn, $query);
 
-                header("Location: connexion.php");
+                die("<script>location.href = 'connexion.php'</script>");
             }
         }
     }

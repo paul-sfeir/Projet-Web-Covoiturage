@@ -56,7 +56,7 @@ include "bdd.php";
 				</li>
 				
 				<li>
-					<a href="resultats.php" id="nav_derniers2">
+					<a href="resultats.php?id=1" id="nav_derniers2">
 						<img src="Media/horloge.png" class="nav_icon" />
 						Les derniers covoiturages
 					</a>
