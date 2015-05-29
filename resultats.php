@@ -248,7 +248,7 @@ include "bdd.php";
                                 $arrayUtilisateur = mysqli_query($conn, $query);
                                 $utilisateur=mysqli_fetch_object($arrayUtilisateur);
 
-                                echo"<article class='contenu'>";
+                                echo"<article class='contenu'><a href='trajet.php?id=".$utilisateur->id_utilisteurs."'>";
                                 echo" <div class='row-fluid'>
                                         <div class='span3'>
 							             <p class='pseudo'>$utilisateur->prenom  $utilisateur->nom</p>
@@ -265,7 +265,7 @@ include "bdd.php";
 						        
                                 echo "<div class='span3'>
                                 <p class='titre'>$data->date_depart</p>
-                                <h2 class='info'>$data->heure_depart</h2>
+                                <h2 class='info'>".$data->heure_depart."H</h2>
                                 <p><img src='Media/depart.png' width='30px'/>$data->ville_depart</p>
                                 <p>$data->modele_voiture</p>
 						          </div>";
@@ -293,7 +293,7 @@ include "bdd.php";
                                 }
 							echo "</div>
 						</div>
-					</div></article>";
+					</div></a></article>";
                     
                             }
                         break;
